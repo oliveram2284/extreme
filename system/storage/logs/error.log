@@ -290,6 +290,9 @@
 2017-08-31 16:52:35 - PHP Notice:  Undefined offset: 4 in D:\wamp\www\kaucoder\extreme\root\catalog\view\theme\up-theme\template\common\header.tpl on line 1870
 2017-08-31 16:52:35 - PHP Notice:  Undefined offset: 4 in D:\wamp\www\kaucoder\extreme\root\catalog\view\theme\up-theme\template\common\header.tpl on line 1870
 2017-08-31 16:52:35 - PHP Notice:  Undefined offset: 4 in D:\wamp\www\kaucoder\extreme\root\catalog\view\theme\up-theme\template\common\header.tpl on line 1870
+<<<<<<< HEAD
 2017-09-27 0:24:38 - PHP Warning:  mail(): Failed to connect to mailserver at &quot;localhost&quot; port 25, verify your &quot;SMTP&quot; and &quot;smtp_port&quot; setting in php.ini or use ini_set() in E:\wamp\www\kaucoder\extreme\root\system\library\mail.php on line 158
 2017-09-27 0:25:15 - PHP Warning:  mail(): Failed to connect to mailserver at &quot;localhost&quot; port 25, verify your &quot;SMTP&quot; and &quot;smtp_port&quot; setting in php.ini or use ini_set() in E:\wamp\www\kaucoder\extreme\root\system\library\mail.php on line 158
 2017-09-27 0:25:16 - PHP Warning:  mail(): Failed to connect to mailserver at &quot;localhost&quot; port 25, verify your &quot;SMTP&quot; and &quot;smtp_port&quot; setting in php.ini or use ini_set() in E:\wamp\www\kaucoder\extreme\root\system\library\mail.php on line 158
+=======
+>>>>>>> 774d4d3011a17015a445a3880f37058b96f940f7

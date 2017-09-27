@@ -35,12 +35,21 @@
       <h2><?php echo $text_my_orders; ?></h2>
       <ul class="list-unstyled">
         <li><a href="<?php echo $order; ?>"><?php echo $text_order; ?></a></li>
+<<<<<<< HEAD
         <li class="hidden"><a href="<?php echo $download; ?>"><?php echo $text_download; ?></a></li>
         <?php if ($reward) { ?>
         <li class="hidden"><a href="<?php echo $reward; ?>"><?php echo $text_reward; ?></a></li>
         <?php } ?>
         <li><a href="<?php echo $return; ?>"><?php echo $text_return; ?></a></li>
         <li class="hidden"><a href="<?php echo $transaction; ?>"><?php echo $text_transaction; ?></a></li>
+=======
+        <li><a href="<?php echo $download; ?>"><?php echo $text_download; ?></a></li>
+        <?php if ($reward) { ?>
+        <li><a href="<?php echo $reward; ?>"><?php echo $text_reward; ?></a></li>
+        <?php } ?>
+        <li><a href="<?php echo $return; ?>"><?php echo $text_return; ?></a></li>
+        <li><a href="<?php echo $transaction; ?>"><?php echo $text_transaction; ?></a></li>
+>>>>>>> 774d4d3011a17015a445a3880f37058b96f940f7
         <li><a href="<?php echo $recurring; ?>"><?php echo $text_recurring; ?></a></li>
       </ul>
       <h2><?php echo $text_my_newsletter; ?></h2>

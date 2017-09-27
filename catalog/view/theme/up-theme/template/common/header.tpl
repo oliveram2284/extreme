@@ -1407,8 +1407,13 @@ $('#open-top-custom-block').click(function() {
             <?php if ($logged) { ?>
             <li class="col-xs-6"><a href="<?php echo $account; ?>"><i class="fa fa-cog"></i><br><?php echo $text_account; ?></a></li>
             <li class="col-xs-6"><a href="<?php echo $order; ?>"><i class="fa fa-inbox"></i><br><?php echo $text_order; ?></a></li>
+<<<<<<< HEAD
             <li class="col-xs-6 hidden"><a href="<?php echo $transaction; ?>"><i class="fa fa-credit-card"></i><br><?php echo $text_transaction; ?></a></li>
             <li class="col-xs-6 hidden"><a href="<?php echo $download; ?>"><i class="fa fa-download"></i><br><?php echo $text_download; ?></a></li>
+=======
+            <li class="col-xs-6"><a href="<?php echo $transaction; ?>"><i class="fa fa-credit-card"></i><br><?php echo $text_transaction; ?></a></li>
+            <li class="col-xs-6"><a href="<?php echo $download; ?>"><i class="fa fa-download"></i><br><?php echo $text_download; ?></a></li>
+>>>>>>> 774d4d3011a17015a445a3880f37058b96f940f7
             <li class="logout"><a href="<?php echo $logout; ?>"><?php echo $text_logout; ?></a></li>
             <?php } else { ?>
             <li class="col-xs-6 register"><a href="<?php echo $register; ?>"><i class="fa fa-pencil"></i><br><?php echo $text_register; ?></a></li>

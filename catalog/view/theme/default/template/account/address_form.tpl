@@ -35,7 +35,11 @@
               <?php } ?>
             </div>
           </div>
+<<<<<<< HEAD
           <div class="form-group hidden">
+=======
+          <div class="form-group">
+>>>>>>> 774d4d3011a17015a445a3880f37058b96f940f7
             <label class="col-sm-2 control-label" for="input-company"><?php echo $entry_company; ?></label>
             <div class="col-sm-10">
               <input type="text" name="company" value="<?php echo $company; ?>" placeholder="<?php echo $entry_company; ?>" id="input-company" class="form-control" />

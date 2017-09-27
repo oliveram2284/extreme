@@ -8,6 +8,10 @@
   <?php } ?>
   <a href="<?php echo $address; ?>" class="list-group-item"><?php echo $text_address; ?></a> <a href="<?php echo $wishlist; ?>" class="list-group-item"><?php echo $text_wishlist; ?></a> <a href="<?php echo $order; ?>" class="list-group-item"><?php echo $text_order; ?></a> <a href="<?php echo $download; ?>" class="list-group-item"><?php echo $text_download; ?></a><a href="<?php echo $recurring; ?>" class="list-group-item"><?php echo $text_recurring; ?></a> <a href="<?php echo $reward; ?>" class="list-group-item"><?php echo $text_reward; ?></a> <a href="<?php echo $return; ?>" class="list-group-item"><?php echo $text_return; ?></a> <a href="<?php echo $transaction; ?>" class="list-group-item"><?php echo $text_transaction; ?></a> <a href="<?php echo $newsletter; ?>" class="list-group-item"><?php echo $text_newsletter; ?></a>
   <?php if ($logged) { ?>
+<<<<<<< HEAD
   <a href="<?php echo $logout; ?>" class="list-group-item"><?php echo $text_logout; ?>dsdsd</a>
+=======
+  <a href="<?php echo $logout; ?>" class="list-group-item"><?php echo $text_logout; ?></a>
+>>>>>>> 774d4d3011a17015a445a3880f37058b96f940f7
   <?php } ?>
 </div>

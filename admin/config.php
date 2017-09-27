@@ -8,6 +8,7 @@ define('HTTPS_SERVER', 'http://extreme.dev/admin/');
 define('HTTPS_CATALOG', 'http://extreme.dev/');
 
 // DIR
+<<<<<<< HEAD
 define('DIR_APPLICATION', 'E:/wamp/www/kaucoder/extreme/root/admin/');
 define('DIR_SYSTEM', 'E:/wamp/www/kaucoder/extreme/root/system/');
 define('DIR_IMAGE', 'E:/wamp/www/kaucoder/extreme/root/image/');
@@ -20,6 +21,20 @@ define('DIR_LOGS', 'E:/wamp/www/kaucoder/extreme/root/system/storage/logs/');
 define('DIR_MODIFICATION', 'E:/wamp/www/kaucoder/extreme/root/system/storage/modification/');
 define('DIR_UPLOAD', 'E:/wamp/www/kaucoder/extreme/root/system/storage/upload/');
 define('DIR_CATALOG', 'E:/wamp/www/kaucoder/extreme/root/catalog/');
+=======
+define('DIR_APPLICATION', 'D:/wamp/www/kaucoder/extreme/root/admin/');
+define('DIR_SYSTEM', 'D:/wamp/www/kaucoder/extreme/root/system/');
+define('DIR_IMAGE', 'D:/wamp/www/kaucoder/extreme/root/image/');
+define('DIR_LANGUAGE', 'D:/wamp/www/kaucoder/extreme/root/admin/language/');
+define('DIR_TEMPLATE', 'D:/wamp/www/kaucoder/extreme/root/admin/view/template/');
+define('DIR_CONFIG', 'D:/wamp/www/kaucoder/extreme/root/system/config/');
+define('DIR_CACHE', 'D:/wamp/www/kaucoder/extreme/root/system/storage/cache/');
+define('DIR_DOWNLOAD', 'D:/wamp/www/kaucoder/extreme/root/system/storage/download/');
+define('DIR_LOGS', 'D:/wamp/www/kaucoder/extreme/root/system/storage/logs/');
+define('DIR_MODIFICATION', 'D:/wamp/www/kaucoder/extreme/root/system/storage/modification/');
+define('DIR_UPLOAD', 'D:/wamp/www/kaucoder/extreme/root/system/storage/upload/');
+define('DIR_CATALOG', 'D:/wamp/www/kaucoder/extreme/root/catalog/');
+>>>>>>> 774d4d3011a17015a445a3880f37058b96f940f7
 
 // DB
 define('DB_DRIVER', 'mysqli');
