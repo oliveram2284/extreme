@@ -35,7 +35,7 @@
               <?php } ?>
             </div>
           </div>
-          <div class="form-group">
+          <div class="form-group hidden">
             <label class="col-sm-2 control-label" for="input-company"><?php echo $entry_company; ?></label>
             <div class="col-sm-10">
               <input type="text" name="company" value="<?php echo $company; ?>" placeholder="<?php echo $entry_company; ?>" id="input-company" class="form-control" />
