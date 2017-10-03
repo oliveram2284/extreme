@@ -50,7 +50,8 @@ class ControllerExtensionExtension extends Controller {
 		
 				$data['categories'][] = array(
 					'code' => $extension,
-					'text' => $this->language->get('heading_title') . ' (' . count($files) .')',
+					//'text' => $this->language->get('heading_title') . ' (' . count($files) .')',
+					'text' => $this->language->get('heading_title'),
 					'href' => $this->url->link('extension/extension/' . $extension, 'token=' . $this->session->data['token'], true)
 				);
 			}			

@@ -108,7 +108,9 @@ class ControllerExtensionExtensionAnalytics extends Controller {
 				$this->load->language('extension/analytics/' . $extension);
 				
 				$store_data = array();
-
+				if(!$this->user->hasPermission('access','extension/analytics/' . $extension)){
+					continue;
+				}
 				$store_data[] = array(
 					'name'   => $this->config->get('config_name'),
 					'edit'   => $this->url->link('extension/analytics/' . $extension, 'token=' . $this->session->data['token'] . '&store_id=0', true),

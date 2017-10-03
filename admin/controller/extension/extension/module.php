@@ -145,7 +145,9 @@ class ControllerExtensionExtensionModule extends Controller {
 				$extension = basename($file, '.php');
 
 				$this->load->language('extension/module/' . $extension);
-
+				if(!$this->user->hasPermission('access','extension/module/' . $extension)){
+					continue;
+				}
 				$module_data = array();
 
 				$modules = $this->model_extension_module->getModulesByCode($extension);

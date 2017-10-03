@@ -97,7 +97,7 @@ class ControllerExtensionExtensionPayment extends Controller {
 		if ($files) {
 			foreach ($files as $file) {
 				$extension = basename($file, '.php');
-
+				
 				$this->load->language('extension/payment/' . $extension);
 
 				$text_link = $this->language->get('text_' . $extension);
@@ -107,7 +107,10 @@ class ControllerExtensionExtensionPayment extends Controller {
 				} else {
 					$link = '';
 				}
-
+				
+				if(!$this->user->hasPermission('access','extension/payment/' . $extension)){
+					continue;
+				}
 				$data['extensions'][] = array(
 					'name'       => $this->language->get('heading_title'),
 					'link'       => $link,

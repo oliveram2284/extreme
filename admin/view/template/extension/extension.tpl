@@ -38,8 +38,9 @@
     </div>
   </div>
   <?php if ($categories) { ?>
-  <script type="text/javascript"><!--
+  <script type="text/javascript">
 $('select[name="type"]').on('change', function() {
+	console.debug("====> URL: %o",$('select[name="type"]').val());
 	$.ajax({
 		url: $('select[name="type"]').val(),
 		dataType: 'html',
@@ -110,7 +111,7 @@ $('#extension').on('click', '.btn-danger, .btn-warning', function(e) {
 		});
 	}
 });
-//--></script>
+</script>
   <?php } ?>
 </div>
 <?php echo $footer; ?> 

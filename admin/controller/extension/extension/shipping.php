@@ -99,7 +99,9 @@ class ControllerExtensionExtensionShipping extends Controller {
 				$extension = basename($file, '.php');
 
 				$this->load->language('extension/shipping/' . $extension);
-
+				if(!$this->user->hasPermission('access','extension/shipping/' . $extension)){
+					continue;
+				}
 				$data['extensions'][] = array(
 					'name'       => $this->language->get('heading_title'),
 					'status'     => $this->config->get($extension . '_status') ? $this->language->get('text_enabled') : $this->language->get('text_disabled'),
