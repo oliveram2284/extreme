@@ -296,3 +296,4 @@
 2017-09-27 0:25:16 - PHP Warning:  mail(): Failed to connect to mailserver at &quot;localhost&quot; port 25, verify your &quot;SMTP&quot; and &quot;smtp_port&quot; setting in php.ini or use ini_set() in E:\wamp\www\kaucoder\extreme\root\system\library\mail.php on line 158
 =======
 >>>>>>> 774d4d3011a17015a445a3880f37058b96f940f7
+2017-10-09 22:11:31 - PHP Warning:  Creating default object from empty value in D:\wamp\www\kaucoder\extreme\root\catalog\controller\extension\module\revslideroutput.php on line 57
