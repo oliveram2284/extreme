@@ -297,3 +297,27 @@
 =======
 >>>>>>> 774d4d3011a17015a445a3880f37058b96f940f7
 2017-10-09 22:11:31 - PHP Warning:  Creating default object from empty value in D:\wamp\www\kaucoder\extreme\root\catalog\controller\extension\module\revslideroutput.php on line 57
+2017-10-09 22:20:06 - PHP Warning:  Creating default object from empty value in D:\wamp\www\kaucoder\extreme\root\catalog\controller\extension\module\revslideroutput.php on line 57
+2017-10-09 22:29:30 - PHP Warning:  Creating default object from empty value in D:\wamp\www\kaucoder\extreme\root\catalog\controller\extension\module\revslideroutput.php on line 57
+2017-10-09 22:47:14 - PHP Notice:  Undefined variable: text_color in D:\wamp\www\kaucoder\extreme\root\vqmod\vqcache\vq2-admin_view_template_catalog_option_form.tpl on line 101
+2017-10-09 22:47:33 - PHP Notice:  Undefined variable: text_color in D:\wamp\www\kaucoder\extreme\root\vqmod\vqcache\vq2-admin_view_template_catalog_option_form.tpl on line 101
+2017-10-11 11:55:51 - PHP Warning:  Creating default object from empty value in D:\wamp\www\kaucoder\extreme\root\catalog\controller\extension\module\revslideroutput.php on line 57
+2017-10-11 12:36:05 - PHP Notice:  Use of undefined constant this - assumed 'this' in D:\wamp\www\kaucoder\extreme\root\vqmod\vqcache\vq2-admin_view_template_catalog_option_form.tpl on line 49
+2017-10-11 12:36:05 - PHP Notice:  Use of undefined constant value - assumed 'value' in D:\wamp\www\kaucoder\extreme\root\vqmod\vqcache\vq2-admin_view_template_catalog_option_form.tpl on line 49
+2017-10-11 12:36:05 - PHP Notice:  Use of undefined constant this - assumed 'this' in D:\wamp\www\kaucoder\extreme\root\vqmod\vqcache\vq2-admin_view_template_catalog_option_form.tpl on line 59
+2017-10-11 12:36:05 - PHP Notice:  Use of undefined constant value - assumed 'value' in D:\wamp\www\kaucoder\extreme\root\vqmod\vqcache\vq2-admin_view_template_catalog_option_form.tpl on line 59
+2017-10-11 12:36:05 - PHP Notice:  Use of undefined constant this - assumed 'this' in D:\wamp\www\kaucoder\extreme\root\vqmod\vqcache\vq2-admin_view_template_catalog_option_form.tpl on line 69
+2017-10-11 12:36:05 - PHP Notice:  Use of undefined constant value - assumed 'value' in D:\wamp\www\kaucoder\extreme\root\vqmod\vqcache\vq2-admin_view_template_catalog_option_form.tpl on line 69
+2017-10-11 12:36:05 - PHP Notice:  Use of undefined constant this - assumed 'this' in D:\wamp\www\kaucoder\extreme\root\vqmod\vqcache\vq2-admin_view_template_catalog_option_form.tpl on line 81
+2017-10-11 12:36:05 - PHP Notice:  Use of undefined constant value - assumed 'value' in D:\wamp\www\kaucoder\extreme\root\vqmod\vqcache\vq2-admin_view_template_catalog_option_form.tpl on line 81
+2017-10-11 12:36:05 - PHP Notice:  Use of undefined constant this - assumed 'this' in D:\wamp\www\kaucoder\extreme\root\vqmod\vqcache\vq2-admin_view_template_catalog_option_form.tpl on line 91
+2017-10-11 12:36:05 - PHP Notice:  Use of undefined constant value - assumed 'value' in D:\wamp\www\kaucoder\extreme\root\vqmod\vqcache\vq2-admin_view_template_catalog_option_form.tpl on line 91
+2017-10-11 12:36:05 - PHP Notice:  Use of undefined constant this - assumed 'this' in D:\wamp\www\kaucoder\extreme\root\vqmod\vqcache\vq2-admin_view_template_catalog_option_form.tpl on line 103
+2017-10-11 12:36:05 - PHP Notice:  Use of undefined constant value - assumed 'value' in D:\wamp\www\kaucoder\extreme\root\vqmod\vqcache\vq2-admin_view_template_catalog_option_form.tpl on line 103
+2017-10-11 12:36:05 - PHP Notice:  Use of undefined constant this - assumed 'this' in D:\wamp\www\kaucoder\extreme\root\vqmod\vqcache\vq2-admin_view_template_catalog_option_form.tpl on line 115
+2017-10-11 12:36:05 - PHP Notice:  Use of undefined constant value - assumed 'value' in D:\wamp\www\kaucoder\extreme\root\vqmod\vqcache\vq2-admin_view_template_catalog_option_form.tpl on line 115
+2017-10-11 12:36:06 - PHP Notice:  Use of undefined constant this - assumed 'this' in D:\wamp\www\kaucoder\extreme\root\vqmod\vqcache\vq2-admin_view_template_catalog_option_form.tpl on line 125
+2017-10-11 12:36:06 - PHP Notice:  Use of undefined constant value - assumed 'value' in D:\wamp\www\kaucoder\extreme\root\vqmod\vqcache\vq2-admin_view_template_catalog_option_form.tpl on line 125
+2017-10-11 12:36:06 - PHP Notice:  Use of undefined constant this - assumed 'this' in D:\wamp\www\kaucoder\extreme\root\vqmod\vqcache\vq2-admin_view_template_catalog_option_form.tpl on line 135
+2017-10-11 12:36:06 - PHP Notice:  Use of undefined constant value - assumed 'value' in D:\wamp\www\kaucoder\extreme\root\vqmod\vqcache\vq2-admin_view_template_catalog_option_form.tpl on line 135
+2017-10-11 13:24:09 - PHP Warning:  Creating default object from empty value in D:\wamp\www\kaucoder\extreme\root\catalog\controller\extension\module\revslideroutput.php on line 57

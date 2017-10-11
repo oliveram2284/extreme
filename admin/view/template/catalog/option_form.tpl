@@ -95,7 +95,8 @@
                 <option value="datetime"><?php echo $text_datetime; ?></option>
                 <?php } ?>
                 </optgroup>
-              </select>
+                
+                </select>
             </div>
           </div>
           <div class="form-group">

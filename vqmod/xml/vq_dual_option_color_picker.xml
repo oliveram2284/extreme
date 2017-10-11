@@ -1,0 +1,57 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<modification>
+    <id>Dual Option Color Picker</id>
+    <version>1.0</version>
+    <vqmver>2.X</vqmver>
+    <author>Molivera</author>
+
+    <file name="admin/language/es/catalog/option.php">
+        <operation info="Add Option Color">
+            <search position="after" offset="1" index='1'>
+                <![CDATA[ $_['error_product']       = 'Advertencia: No se puede eliminar, actualmente esta asignado a %s productos.'; ]]>
+            </search>
+            <add>
+                <![CDATA[
+                $_['text_color']       = '<b> Colores </b>';
+                ]]>
+            </add>
+        </operation>
+    </file>
+
+    <file name="admin/controller/catalog/option.php">
+        <operation info="Add Option Color">
+            <search position="after" offset="1" index='1'>
+                <![CDATA[ $data['text_time'] = $this->language->get('text_time'); ]]>
+            </search>
+            <add>
+                <![CDATA[ $data['text_color'] = $this->language->get('text_color'); ]]>
+            </add>
+        </operation>
+    </file>
+    
+    <file name="admin/view/template/catalog/option_form.tpl">
+        <operation info="Add Option Color">
+            <search position="after" offset="1" index='4'>
+                <![CDATA[  </optgroup> ]]>
+            </search>
+            <add>            
+            <![CDATA[
+               <option value="color"><?php echo $text_color?> </option>
+            ]]>
+            </add>           
+        </operation>
+            
+        <operation error="skip" info="Add Twig support">
+            <search position="replace">
+                <![CDATA[	} else {  ]]>
+            </search>
+            <add>
+                <![CDATA[ } else if( this.value == 'color' ){ 
+                                alert("hola");
+                            }else {               
+                    ]]>
+            </add>
+        </operation>
+    </file>
+
+</modification>
