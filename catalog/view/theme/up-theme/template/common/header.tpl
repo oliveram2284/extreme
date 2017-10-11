@@ -1436,7 +1436,7 @@ $('#open-top-custom-block').click(function() {
     <div class="row">
     
       <?php if($t1o_logo_position =='center') { ?>
-      <div class="col-sm-4 header-information hidden-xs">
+      <div class="col-sm-3 header-information hidden-xs">
       <a href="#menu-toggle" class="" id="menu-toggle">
       <div id="information-block" class="buttons-header">
         <div class="button-i"><i class="fa fa-bars"></i></div>
@@ -1466,7 +1466,7 @@ $('#open-top-custom-block').click(function() {
       </div>
       <?php } ?>
       
-      <div class="col-xs-12 col-sm-4 header-logo">
+      <div class="col-xs-12 col-sm-6 header-logo">
         <div id="logo">
           <?php if ($logo) { ?>
           <a href="<?php echo $home; ?>"><img src="<?php echo $logo; ?>" title="<?php echo $name; ?>" alt="<?php echo $name; ?>" /></a>
@@ -1477,7 +1477,7 @@ $('#open-top-custom-block').click(function() {
       </div>
       
       <?php if($t1o_logo_position =='center') { ?>
-      <div class="col-sm-4">
+      <div class="col-sm-3">
       <?php } else { ?>
       <div class="col-xs-12 col-sm-8">
       <?php } ?>
