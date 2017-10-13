@@ -38,7 +38,7 @@ legend,
 
 #content h1::before,
 #content h2::before {
-    border-bottom: 3px solid #018CD0;
+    border-bottom: 3px solid #BD0000;
 }
 
 #content h1,
@@ -106,7 +106,7 @@ a:hover,
 .list-group a:hover,
 .category-list .image:hover,
 .save-percent {
-    color: #018CD0;
+    color: #BD0000;
 }
 
 
@@ -139,16 +139,16 @@ a:hover,
 .accordion li.dcjq-parent-li>a+.dcjq-icon:hover,
 .up-theme-gallery-content .gallery-hover-box i,
 .up-theme-modal-popup .modal-body .close {
-    color: #018CD0;
+    color: #BD0000;
 }
 
 .owl-carousel .owl-buttons div:hover,
 .mfp-close:hover {
-    color: #018CD0!important;
+    color: #BD0000!important;
 }
 
 #toTop {
-    background-color: #018CD0;
+    background-color: #BD0000;
 }
 
 
@@ -232,7 +232,7 @@ legend,
 .nav-tabs>li.active>a:hover,
 .nav-tabs>li.active>a,
 .nav-tabs>li.active>a:focus {
-    border-top: 1px solid #018CD0;
+    border-top: 1px solid #BD0000;
 }
 
 
@@ -265,7 +265,7 @@ legend,
 }
 
 #column-left a:hover {
-    color: #018CD0;
+    color: #BD0000;
 }
 
 #column-left {
@@ -321,7 +321,7 @@ legend,
 
 #column-right a:hover,
 #column-right .dr-menu>div .dr-icon i {
-    color: #018CD0;
+    color: #BD0000;
 }
 
 #column-right {
@@ -382,7 +382,7 @@ legend,
 #column-right .panel-default.panel-category .cat-mod-child a:hover,
 #column-left .panel-default.panel-category a.list-group-item.active,
 #column-right .panel-default.panel-category a.list-group-item.active {
-    color: #018CD0;
+    color: #BD0000;
 }
 
 #column-left .panel-default.panel-category .cat-mod-child a,
@@ -422,7 +422,7 @@ legend,
 
 #column-left .panel-default.filters label:hover,
 #column-right .panel-default.filters label:hover {
-    color: #018CD0;
+    color: #BD0000;
 }
 
 #logo {
@@ -468,7 +468,7 @@ legend,
 /*  HEADER  */
 
 header {
-    background-color: #018cd0;
+    background-color: #BD0000;
     background-image: none;
     background-position: top center;
     background-repeat: repeat;
@@ -485,7 +485,7 @@ header {
 }
 
 .buttons-header:hover .button-i {
-    /*color: #F13800;*/
+    /*color: #333333;*/
     color: #868080;
 }
 
@@ -526,7 +526,7 @@ header {
 
 #top,
 #open-top-custom-block {
-    /*background-color: #018CD0;*/
+    /*background-color: #BD0000;*/
     background-color: #000000;
 }
 
@@ -587,7 +587,7 @@ header {
 /*  Home Page Link  */
 
 #menu #homepage:hover {
-    background-color: #0184C4;
+    background-color: #BD0000;
 }
 
 #menu #homepage a {
@@ -604,7 +604,7 @@ header {
 .menu_oc:hover,
 #menu_ver:hover,
 #menu_hor:hover {
-    background-color: #0184C4;
+    background-color: #BD0000;
 }
 
 .menu_oc>a,
@@ -623,7 +623,7 @@ header {
 /*  Brands Section  */
 
 #menu_brands:hover {
-    background-color: #0184C4;
+    background-color: #BD0000;
 }
 
 #menu_brands>a {
@@ -638,7 +638,7 @@ header {
 /*  Custom Links Section  */
 
 .menu_links:hover {
-    background-color: #0184C4;
+    background-color: #BD0000;
 }
 
 .menu_links a {
@@ -653,7 +653,7 @@ header {
 /*  Custom Menu Section  */
 
 #menu_custom_menu:hover {
-    background-color: #0184C4;
+    background-color: #BD0000;
 }
 
 #menu_custom_menu>a {
@@ -668,7 +668,7 @@ header {
 /*  Custom Blocks Section  */
 
 .menu_custom_block:hover {
-    background-color: #0184C4;
+    background-color: #BD0000;
 }
 
 .menu_custom_block>a {
@@ -685,7 +685,7 @@ header {
 #menu .dropdown-menu,
 #menu .dropdown-menus {
     background-color: #FFFFFF;
-    color: #0184C4;
+    color: #BD0000;
     -webkit-box-shadow: 3px 3px 2px 3px rgba(0, 0, 0, 0.75);
     -moz-box-shadow: 3px 3px 2px 3px rgba(0, 0, 0, 0.75);
     box-shadow: 3px 3px 2px 3px rgba(0, 0, 0, 0.75);
@@ -747,7 +747,7 @@ header {
 /*  Custom Bar below Main Menu  */
 
 #custom-bar-wrapper {
-    background-color: #018CD0;
+    background-color: #BD0000;
     color: #FFFFFF;
     animation: animatedBackground 40s linear infinite;
 }
@@ -760,7 +760,7 @@ header {
 }
 
 .owl-controls .owl-page.active span {
-    background: #018CD0;
+    background: #BD0000;
 }
 
 
@@ -774,15 +774,15 @@ header {
 /*  Product Box  */
 
 span.badge.sale {
-    background-color: #F13800;
+    background-color: #333333;
 }
 
 span.badge.new {
-    background-color: #018CD0;
+    background-color: #BD0000;
 }
 
 .rating .fa-star {
-    color: #F13800;
+    color: #333333;
 }
 
 .product-grid .name,
@@ -821,12 +821,12 @@ span.badge.new {
 
 .video_box_left #video_box_icon,
 .video_box_right #video_box_icon {
-    background-color: #F13800;
+    background-color: #333333;
 }
 
 .video_box_right .video_box,
 .video_box_left .video_box {
-    border: 4px solid #F13800;
+    border: 4px solid #333333;
 }
 
 
@@ -888,7 +888,7 @@ footer {
 
 #information {
     color: #FFFFFF;
-    background-color: #018CD0;
+    background-color: #BD0000;
     background-image: none;
     background-position: top center;
     background-repeat: repeat;
@@ -963,7 +963,7 @@ footer {
 }
 
 #footer_custom a:hover {
-    color: #018CD0;
+    color: #BD0000;
 }
 
 
@@ -996,7 +996,7 @@ footer {
 }
 
 .ei-slider-thumbs li.ei-slider-element {
-    background: #018CD0;
+    background: #BD0000;
 }
 
 
@@ -1066,9 +1066,9 @@ input.inc:hover,
 #menu #menu_hor .dropdown-menus li.main-cat>a:hover,
 #menu_brands .brand-item a:hover .name,
 #sidebar-wrapper-contact a.btn-default:hover {
-    background-color: #F13800;
+    background-color: #333333;
     color: #FFFFFF;
-    border: 3px solid #F13800;
+    border: 3px solid #333333;
 }
 
 .btn-primary,
@@ -1081,9 +1081,9 @@ input.inc:hover,
 #information a.btn-primary,
 #cart .btn-primary,
 #sidebar-wrapper-contact a.btn-primary {
-    background-color: #018CD0;
+    background-color: #BD0000;
     color: #FFFFFF;
-    border: 3px solid #018CD0;
+    border: 3px solid #BD0000;
 }
 
 .btn-primary:hover,
@@ -1095,9 +1095,9 @@ input.inc:hover,
 #information a.btn-primary:hover,
 #cart .btn-primary:hover,
 #sidebar-wrapper-contact a.btn-primary:hover {
-    background-color: #F13800;
+    background-color: #333333;
     color: #FFFFFF;
-    border: 3px solid #F13800;
+    border: 3px solid #333333;
 }
 
 .btn,
@@ -1186,7 +1186,7 @@ input.inc:hover,
 #cart button.item-remove,
 .prev-arrow i,
 .next-arrow i {
-    color: #018CD0;
+    color: #BD0000;
 }
 
 #top-links .my-account-dropdown-menu li a:hover i,
@@ -1194,7 +1194,7 @@ input.inc:hover,
 #menu-toggle-close span,
 #contact-toggle-close span,
 #menu-mobile-toggle-close span {
-    color: #018CD0;
+    color: #BD0000;
 }
 
 .my-account-dropdown-menu li.logout,
@@ -1300,7 +1300,7 @@ label,
 .product-thumb .product_box_brand a,
 .product-right-sm-related .product_box_brand a,
 .tooltip {
-    font-size: 10px;
+    font-size: 12px;
 }
 
 
