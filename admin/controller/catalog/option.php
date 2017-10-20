@@ -20,8 +20,10 @@ class ControllerCatalogOption extends Controller {
 		$this->load->model('catalog/option');
 
 		if (($this->request->server['REQUEST_METHOD'] == 'POST') && $this->validateForm()) {
+			
+			
 			$this->model_catalog_option->addOption($this->request->post);
-
+			
 			$this->session->data['success'] = $this->language->get('text_success');
 
 			$url = '';
@@ -239,6 +241,8 @@ class ControllerCatalogOption extends Controller {
 			$url .= '&order=' . $this->request->get['order'];
 		}
 
+		var_dump();
+
 		$pagination = new Pagination();
 		$pagination->total = $option_total;
 		$pagination->page = $page;
@@ -380,11 +384,21 @@ class ControllerCatalogOption extends Controller {
 			$option_values = array();
 		}
 
+
+		if (isset($this->request->post['option_color_values'])) {
+			$option_color_values = $this->request->post['option_color_values'];
+		} elseif (isset($this->request->get['option_id'])) {
+			$option_color_values = array();//$this->model_catalog_option->getOptionValueDescriptions($this->request->get['option_id']);
+		} else {
+			$option_color_values = array();
+		}
+
 		$this->load->model('tool/image');
 
 		$data['option_values'] = array();
 
 		foreach ($option_values as $option_value) {
+			
 			if (is_file(DIR_IMAGE . $option_value['image'])) {
 				$image = $option_value['image'];
 				$thumb = $option_value['image'];
@@ -397,11 +411,16 @@ class ControllerCatalogOption extends Controller {
 				'option_value_id'          => $option_value['option_value_id'],
 				'option_value_description' => $option_value['option_value_description'],
 				'image'                    => $image,
+				'color1'                   => $option_value['color1'],
+				'color2'                   => $option_value['color2'],
 				'thumb'                    => $this->model_tool_image->resize($thumb, 100, 100),
 				'sort_order'               => $option_value['sort_order']
 			);
 		}
 
+
+		$data['option_color_values'] = array();
+		
 		$data['placeholder'] = $this->model_tool_image->resize('no_image.png', 100, 100);
 
 		$data['header'] = $this->load->controller('common/header');

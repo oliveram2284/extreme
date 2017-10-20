@@ -95,7 +95,15 @@
                 <option value="datetime"><?php echo $text_datetime; ?></option>
                 <?php } ?>
                 </optgroup>
-                
+                <optgroup label="<?php echo $text_color; ?>">
+                <?php if ($type == 'color') { ?>
+                <option value="color" selected="selected"><?php echo $text_color; ?></option>
+                <?php } else { ?>
+                <option value="color"><?php echo $text_color; ?></option>
+                <?php } ?>
+                  
+                </optgroup>
+                 
                 </select>
             </div>
           </div>
@@ -142,22 +150,75 @@
               </tr>
             </tfoot>
           </table>
+           
+          <table id="option-color-value" class="table table-striped table-bordered table-hover">
+            <thead>
+              <tr>
+                <td class="text-left required"><?php echo $entry_color_title; ?></td>
+                <td class="text-left "><?php echo $entry_color1; ?></td>
+                <td class="text-left"><?php echo $entry_color2; ?></td>
+                <td class="text-left"><?php echo $entry_color_size; ?></td>
+                <td class="text-right"><?php echo $entry_sort_order; ?></td>
+                <td></td>
+              </tr>
+            </thead>
+            <tbody>
+              <?php $option_color_value_row = 0; ?>
+              <?php foreach ($option_values as $option_value) { ?>
+              <tr id="option-value-row<?php echo $option_color_value_row; ?>">
+                <td class="text-left"><input type="hidden" name="option_value[<?php echo $option_color_value_row; ?>][option_value_id]" value="<?php echo $option_value['option_value_id']; ?>" />
+                  <?php foreach ($languages as $language) { ?>
+                  <div class="input-group"><span class="input-group-addon"><img src="language/<?php echo $language['code']; ?>/<?php echo $language['code']; ?>.png" title="<?php echo $language['name']; ?>" /></span>
+                    <input type="text" name="option_value[<?php echo $option_color_value_row; ?>][option_value_description][<?php echo $language['language_id']; ?>][name]" value="<?php echo isset($option_value['option_value_description'][$language['language_id']]) ? $option_value['option_value_description'][$language['language_id']]['name'] : ''; ?>" placeholder="<?php echo $entry_option_value; ?>" class="form-control" />
+                  </div>
+                  <?php if (isset($error_option_value[$option_color_value_row][$language['language_id']])) { ?>
+                  <div class="text-danger"><?php echo $error_option_value[$option_color_value_row][$language['language_id']]; ?></div>
+                  <?php } ?>
+                  <?php } ?>
+                </td>
+                <td><div id="color_1_<?php echo $option_color_value_row; ?>" class="input-group colorpicker-component"> <input type="text" name="option_value[<?php echo $option_color_value_row; ?>][option_color_1]" value="<?php echo $option_value['color1']; ?>" class="form-control" /><span class="input-group-addon"><i></i></span></div></td>
+                <td><div id="color_2_<?php echo $option_color_value_row; ?>" class="input-group colorpicker-component"> <input type="text" name="option_value[<?php echo $option_color_value_row; ?>][option_color_2]" value="<?php echo $option_value['color2']; ?>" class="form-control" /><span class="input-group-addon"><i></i></span></div></td>
+                <td class="text-center">
+                  <input type="checkbox"  id="all_size_<?php echo $option_color_value_row; ?>"  name="option_value[<?php echo $option_color_value_row; ?>][option_all_size]" value="1" checked>
+                <a href="" id="thumb-image<?php echo $option_color_value_row; ?>" data-toggle="image" class="img-thumbnail hidden"><img src="<?php echo $option_value['thumb']; ?>" alt="" title="" data-placeholder="<?php echo $placeholder; ?>" /></a>
+                  <input type="hidden" name="option_value[<?php echo $option_color_value_row; ?>][image]" value="<?php echo $option_value['image']; ?>" id="input-image<?php echo $option_color_value_row; ?>" /></td>
+                <td class="text-right"><input type="text" name="option_value[<?php echo $option_color_value_row; ?>][sort_order]" value="<?php echo $option_value['sort_order']; ?>" class="form-control" /></td>
+                <td class="text-left"><button type="button" onclick="$('#option-value-row<?php echo $option_color_value_row; ?>').remove();" data-toggle="tooltip" title="<?php echo $button_remove; ?>" class="btn btn-danger"><i class="fa fa-minus-circle"></i></button></td>
+              </tr>
+              <?php $option_color_value_row++; ?>
+              <?php } ?>
+            </tbody>
+            <tfoot>
+              <tr>
+                <td colspan="5"></td>
+                <td class="text-left"><button type="button" onclick="addOptionColorValue();" data-toggle="tooltip" title="<?php echo $button_option_value_add; ?>" class="btn btn-primary"><i class="fa fa-plus-circle"></i></button></td>
+              </tr>
+            </tfoot>
+          </table>
         </form>
       </div>
     </div>
   </div>
   <script type="text/javascript"><!--
 $('select[name=\'type\']').on('change', function() {
+  console.debug(this.value);
 	if (this.value == 'select' || this.value == 'radio' || this.value == 'checkbox' || this.value == 'image') {
 		$('#option-value').show();
+    $('#option-color-value').hide();
+	} else if(this.value=="color") {
+    $('#option-value').hide();
+    $('#option-color-value').show();
+    
 	} else {
 		$('#option-value').hide();
+    $('#option-color-value').hide();
 	}
 });
 
 $('select[name=\'type\']').trigger('change');
 
 var option_value_row = <?php echo $option_value_row; ?>;
+var option_color_value_row = <?php echo $option_color_value_row; ?>;
 
 function addOptionValue() {
 	html  = '<tr id="option-value-row' + option_value_row + '">';	
@@ -177,5 +238,42 @@ function addOptionValue() {
 	
 	option_value_row++;
 }
+
+$(document).on('click','.colorpicker-component',function(){
+  $(this).colorpicker({
+            colorSelectors: {
+                'black': '#000000',
+                'white': '#ffffff',
+                'red': '#FF0000',
+                'default': '#777777',
+                'primary': '#337ab7',
+                'success': '#5cb85c',
+                'info': '#5bc0de',
+                'warning': '#f0ad4e',
+                'danger': '#d9534f'
+            }
+        });
+});
+function addOptionColorValue(){
+  var html='<tr id="option-value-row' + option_color_value_row + '">';
+  html += '  <td class="text-left"><input type="hidden" name="option_value[' + option_color_value_row + '][option_value_id]" value="" />';	
+  <?php foreach ($languages as $language) { ?>
+    html += '    <div class="input-group">';
+    html += '      <span class="input-group-addon"><img src="language/<?php echo $language['code']; ?>/<?php echo $language['code']; ?>.png" title="<?php echo $language['name']; ?>" /></span><input type="text" name="option_value[' + option_color_value_row + '][option_value_description][<?php echo $language['language_id']; ?>][name]" value="" placeholder="<?php echo $entry_option_value; ?>" class="form-control" />';
+    html += '    </div>';
+	<?php } ?>
+	html += '  </td>';
+  html += '<td><div id="color_1_' + option_color_value_row + '" class="input-group colorpicker-component"> <input type="text" name="option_value[' + option_color_value_row + '][option_color_1]" value="#ffffff" class="form-control" /><span class="input-group-addon"><i></i></span></div> </td>';
+  html += '<td><div id="color_2_' + option_color_value_row + '" class="input-group colorpicker-component"> <input type="text" name="option_value[' + option_color_value_row + '][option_color_2]" value="#000000" class="form-control" /><span class="input-group-addon"><i></i></span></div> </td>';
+  html += '<td class="text-center"><input type="checkbox"  id="all_size_' + option_color_value_row+'"  name="option_value[' + option_color_value_row + '][option_all_size]" value="1"></td>';
+  //html += '  <td class="text-left"><a href="" id="thumb-image' + option_color_value_row + '" data-toggle="image" class="img-thumbnail"><img src="<?php echo $placeholder; ?>" alt="" title="" data-placeholder="<?php echo $placeholder; ?>" /></a><input type="hidden" name="option_value[' + option_color_value_row + '][image]" value="" id="input-image' + option_color_value_row + '" /></td>';
+  html += '<input type="hidden" name="option_value[' + option_color_value_row + '][image]" value="" id="input-image' + option_color_value_row + '" />'
+	html += '  <td class="text-right"><input type="text" name="option_value[' + option_color_value_row + '][sort_order]" value="" placeholder="<?php echo $entry_sort_order; ?>" class="form-control" /></td>';
+	html += '  <td class="text-left"><button type="button" onclick="$(\'#option-value-row' + option_color_value_row + '\').remove();" data-toggle="tooltip" title="<?php echo $button_remove; ?>" class="btn btn-danger"><i class="fa fa-minus-circle"></i></button></td>';
+	html += '</tr>';	
+  $('#option-color-value').append(html);
+  option_color_value_row++;
+};
+
 //--></script></div>
 <?php echo $footer; ?>
