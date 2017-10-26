@@ -1,5 +1,6 @@
 <?php echo $header; ?><?php echo $column_left; ?>
 <div id="content">
+ <?php var_dump($option_values);?>
   <div class="page-header">
     <div class="container-fluid">
       <div class="pull-right">
@@ -545,6 +546,121 @@
                         </div>
                       </div>
                       <?php } ?>
+                      <?php if($product_option['type'] == 'color'):?>
+                        <div class="table-responsive">
+                        <table id="option-value<?php echo $option_row; ?>" class="table table-striped table-bordered table-hover">
+                          <thead>
+                            <tr>
+                              <td class="text-left"><?php echo $entry_color_title; ?></td>
+                              <td class="text-right"><?php echo $entry_color_1; ?></td>
+                              <td class="text-left"><?php echo $entry_sizes; ?></td>
+                              <td class="text-right"><?php echo $entry_quantity; ?></td>
+                              <td class="text-left"><?php echo $entry_subtract; ?></td>
+                              <td class="text-right"><?php echo $entry_price; ?></td>
+                              <td class="text-right"><?php echo $entry_option_points; ?></td>
+                              <td class="text-right"><?php echo $entry_weight; ?></td>
+                              <td></td>
+                            </tr>
+                          </thead>
+                          <tbody>
+                            <?php $option_value_row++; ?>
+                            <?php foreach ($product_option['product_option_value'] as $product_option_value):?>
+                               <tr id="option-value-row<?php echo $option_value_row; ?>">
+                                <td class="text-left">                                
+                                  <select name="product_option[<?php echo $option_row; ?>][product_option_value][<?php echo $option_value_row; ?>][option_value_id]" id="select_color_option_<?php echo $option_row; ?>_<?php echo $option_value_row; ?>" class=" option_color_picker form-control">
+                                  <?php if (isset($option_values[$product_option['option_id']])) { ?>
+                                  <?php foreach ($option_values[$product_option['option_id']] as $option_value) { ?>
+                                  <?php if ($option_value['option_value_id'] == $product_option_value['option_value_id']) { ?>
+                                  <option value="<?php echo $option_value['option_value_id']; ?>" selected="selected" data-color1="<?php echo $option_value['color1']; ?>" data-color2="<?php echo $option_value['color2']; ?>" ><?php echo $option_value['name']; ?></option>
+                                  <?php } else { ?>
+                                  <option value="<?php echo $option_value['option_value_id']; ?>" data-color1="<?php echo $option_value['color1']; ?>" data-color2="<?php echo $option_value['color2']; ?>"><?php echo $option_value['name']; ?></option>
+                                  <?php } ?>
+                                  <?php } ?>
+                                  <?php } ?>
+                                </select>
+                                <input type="hidden" name="product_option[<?php echo $option_row; ?>][product_option_value][<?php echo $option_value_row; ?>][product_option_value_id]" value="<?php echo $product_option_value['product_option_value_id']; ?>" />
+                                </td>
+                                <td class="text-right"><span class="span_color color1"></span> | <span class="span_color color2"></span> </td>
+                                <td class="text-right">
+                                  <?php for($i=5;$i<=50;$i++):?>
+                                    <input type="checkbox" name="product_option[<?php echo $option_row; ?>][product_option_value][<?php echo $option_value_row; ?>][size][]" id="" class="" value="<?php echo $i?>" ><?php echo $i?>
+                                    <?php echo ($i!=5 && $i%5==0)?'<br>':''?>
+                                  <?php endfor;?>
+                                </td>
+                                <td class="text-right"><input type="text" name="product_option[<?php echo $option_row; ?>][product_option_value][<?php echo $option_value_row; ?>][quantity]" value="<?php echo $product_option_value['quantity']; ?>" placeholder="<?php echo $entry_quantity; ?>" class="form-control" /></td>
+                              <td class="text-left"><select name="product_option[<?php echo $option_row; ?>][product_option_value][<?php echo $option_value_row; ?>][subtract]" class="form-control">
+                                  <?php if ($product_option_value['subtract']) { ?>
+                                  <option value="1" selected="selected"><?php echo $text_yes; ?></option>
+                                  <option value="0"><?php echo $text_no; ?></option>
+                                  <?php } else { ?>
+                                  <option value="1"><?php echo $text_yes; ?></option>
+                                  <option value="0" selected="selected"><?php echo $text_no; ?></option>
+                                  <?php } ?>
+                                </select></td>
+                              <td class="text-right"><select name="product_option[<?php echo $option_row; ?>][product_option_value][<?php echo $option_value_row; ?>][price_prefix]" class="form-control">
+                                  <?php if ($product_option_value['price_prefix'] == '+') { ?>
+                                  <option value="+" selected="selected">+</option>
+                                  <?php } else { ?>
+                                  <option value="+">+</option>
+                                  <?php } ?>
+                                  <?php if ($product_option_value['price_prefix'] == '-') { ?>
+                                  <option value="-" selected="selected">-</option>
+                                  <?php } else { ?>
+                                  <option value="-">-</option>
+                                  <?php } ?>
+                                </select>
+                                <input type="text" name="product_option[<?php echo $option_row; ?>][product_option_value][<?php echo $option_value_row; ?>][price]" value="<?php echo $product_option_value['price']; ?>" placeholder="<?php echo $entry_price; ?>" class="form-control" /></td>
+                              <td class="text-right"><select name="product_option[<?php echo $option_row; ?>][product_option_value][<?php echo $option_value_row; ?>][points_prefix]" class="form-control">
+                                  <?php if ($product_option_value['points_prefix'] == '+') { ?>
+                                  <option value="+" selected="selected">+</option>
+                                  <?php } else { ?>
+                                  <option value="+">+</option>
+                                  <?php } ?>
+                                  <?php if ($product_option_value['points_prefix'] == '-') { ?>
+                                  <option value="-" selected="selected">-</option>
+                                  <?php } else { ?>
+                                  <option value="-">-</option>
+                                  <?php } ?>
+                                </select>
+                                <input type="text" name="product_option[<?php echo $option_row; ?>][product_option_value][<?php echo $option_value_row; ?>][points]" value="<?php echo $product_option_value['points']; ?>" placeholder="<?php echo $entry_points; ?>" class="form-control" /></td>
+                              <td class="text-right"><select name="product_option[<?php echo $option_row; ?>][product_option_value][<?php echo $option_value_row; ?>][weight_prefix]" class="form-control">
+                                  <?php if ($product_option_value['weight_prefix'] == '+') { ?>
+                                  <option value="+" selected="selected">+</option>
+                                  <?php } else { ?>
+                                  <option value="+">+</option>
+                                  <?php } ?>
+                                  <?php if ($product_option_value['weight_prefix'] == '-') { ?>
+                                  <option value="-" selected="selected">-</option>
+                                  <?php } else { ?>
+                                  <option value="-">-</option>
+                                  <?php } ?>
+                                </select>
+                                <input type="text" name="product_option[<?php echo $option_row; ?>][product_option_value][<?php echo $option_value_row; ?>][weight]" value="<?php echo $product_option_value['weight']; ?>" placeholder="<?php echo $entry_weight; ?>" class="form-control" /></td>
+                              <td class="text-left"><button type="button" onclick="$(this).tooltip('destroy');$('#option-value-row<?php echo $option_value_row; ?>').remove();" data-toggle="tooltip" title="<?php echo $button_remove; ?>" class="btn btn-danger"><i class="fa fa-minus-circle"></i></button></td>
+                                
+                              </tr>
+                               <?php $option_value_row++; ?>
+                            <?php endforeach;?>
+                            
+                          </tbody>
+                          <tfoot>
+                            <tr>
+                              <td colspan="8"></td>
+                              <td class="text-left"><button type="button" onclick="addOptionValueColor('<?php echo $option_row; ?>');" data-toggle="tooltip" title="<?php echo $button_option_value_add; ?>" class="btn btn-primary"><i class="fa fa-plus-circle"></i></button></td>
+                            </tr>
+                          </tfoot>
+                        </table>
+
+                        
+                      </div>
+                      <select id="option-values<?php echo $option_row; ?>" style="display: none;" class="option_color_select">
+                        <?php if (isset($option_values[$product_option['option_id']])) { ?>
+                        <?php foreach ($option_values[$product_option['option_id']] as $option_value) { ?>
+                        <option value="<?php echo $option_value['option_value_id']; ?>" data-color1="<?php echo $option_value['color1']; ?>" data-color2="<?php echo $option_value['color2']; ?>"><?php echo $option_value['name']; ?></option>
+                        <?php } ?>
+                        <?php } ?>
+                      </select>
+                      <?php endif;?>
                       <?php if ($product_option['type'] == 'select' || $product_option['type'] == 'radio' || $product_option['type'] == 'checkbox' || $product_option['type'] == 'image') { ?>
                       <div class="table-responsive">
                         <table id="option-value<?php echo $option_row; ?>" class="table table-striped table-bordered table-hover">
@@ -636,6 +752,7 @@
                           </tfoot>
                         </table>
                       </div>
+                     
                       <select id="option-values<?php echo $option_row; ?>" style="display: none;">
                         <?php if (isset($option_values[$product_option['option_id']])) { ?>
                         <?php foreach ($option_values[$product_option['option_id']] as $option_value) { ?>
@@ -752,6 +869,7 @@
                 </table>
               </div>
             </div>
+             
             <div class="tab-pane" id="tab-special">
               <div class="table-responsive">
                 <table id="special" class="table table-striped table-bordered table-hover">
@@ -1231,6 +1349,8 @@ $('input[name=\'option\']').autocomplete({
 			html += '</div>';
 		}
 
+   
+
 		$('#tab-option .tab-content').append(html);
 
 		$('#option > li:last-child').before('<li><a href="#tab-option' + option_row + '" data-toggle="tab"><i class="fa fa-minus-circle" onclick=" $(\'#option a:first\').tab(\'show\');$(\'a[href=\\\'#tab-option' + option_row + '\\\']\').parent().remove(); $(\'#tab-option' + option_row + '\').remove();"></i>' + item['label'] + '</li>');
@@ -1258,10 +1378,13 @@ $('input[name=\'option\']').autocomplete({
 		option_row++;
 	}
 });
+
+
+
 //--></script>
   <script type="text/javascript"><!--
-var option_value_row = <?php echo $option_value_row; ?>;
 
+var option_value_row = <?php echo $option_value_row; ?>;
 function addOptionValue(option_row) {
 	html  = '<tr id="option-value-row' + option_value_row + '">';
 	html += '  <td class="text-left"><select name="product_option[' + option_row + '][product_option_value][' + option_value_row + '][option_value_id]" class="form-control">';
@@ -1410,5 +1533,8 @@ $('.datetime').datetimepicker({
   <script type="text/javascript"><!--
 $('#language a:first').tab('show');
 $('#option a:first').tab('show');
+
+
+
 //--></script></div>
 <?php echo $footer; ?>

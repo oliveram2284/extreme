@@ -140,6 +140,9 @@ class ModelCatalogOption extends Model {
 			$option_value_data[] = array(
 				'option_value_id' => $option_value['option_value_id'],
 				'name'            => $option_value['name'],
+				'color1'            => $option_value['color1'],
+				'color2'            => $option_value['color2'],
+				'name'            => $option_value['name'],
 				'image'           => $option_value['image'],
 				'sort_order'      => $option_value['sort_order']
 			);

@@ -497,7 +497,7 @@ class ControllerCatalogOption extends Controller {
 			foreach ($options as $option) {
 				$option_value_data = array();
 
-				if ($option['type'] == 'select' || $option['type'] == 'radio' || $option['type'] == 'checkbox' || $option['type'] == 'image') {
+				if ($option['type'] == 'select' || $option['type'] == 'radio' || $option['type'] == 'checkbox' || $option['type'] == 'image' || $option['type'] == 'image') {
 					$option_values = $this->model_catalog_option->getOptionValues($option['option_id']);
 
 					foreach ($option_values as $option_value) {
@@ -514,6 +514,41 @@ class ControllerCatalogOption extends Controller {
 						);
 					}
 
+					$sort_order = array();
+
+					foreach ($option_value_data as $key => $value) {
+						$sort_order[$key] = $value['name'];
+					}
+
+					array_multisort($sort_order, SORT_ASC, $option_value_data);
+				}
+
+				if ($option['type'] == 'color') {
+					$option_values = $this->model_catalog_option->getOptionValues($option['option_id']);
+					
+					foreach ($option_values as $option_value) {
+						//var_dump($option_value);
+						
+						/*if (is_file(DIR_IMAGE . $option_value['image'])) {
+							$image = $this->model_tool_image->resize($option_value['image'], 50, 50);
+						} else {
+							$image = $this->model_tool_image->resize('no_image.png', 50, 50);
+						}*/
+						$image = $this->model_tool_image->resize('no_image.png', 50, 50);
+						$sizes=array();
+						/*for($i=9;$i<50;$i++){
+							$sizes[]=$i;
+						}*/
+						$option_value_data[] = array(
+							'option_value_id' => $option_value['option_value_id'],
+							'name'            => strip_tags(html_entity_decode($option_value['name'], ENT_QUOTES, 'UTF-8')),
+							'color1'          => $option_value['color1'],
+							'color2'          => $option_value['color2'],
+							'sizes'			  => $sizes,
+							'image'           => $image
+						);
+					}
+					//die();
 					$sort_order = array();
 
 					foreach ($option_value_data as $key => $value) {
