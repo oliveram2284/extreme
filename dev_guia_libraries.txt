@@ -1,0 +1,1 @@
+# Color Picker Library: https://farbelous.github.io/bootstrap-colorpicker/
