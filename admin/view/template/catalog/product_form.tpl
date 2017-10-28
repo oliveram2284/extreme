@@ -1,6 +1,5 @@
 <?php echo $header; ?><?php echo $column_left; ?>
 <div id="content">
- <?php var_dump($option_values);?>
   <div class="page-header">
     <div class="container-fluid">
       <div class="pull-right">
@@ -557,8 +556,8 @@
                               <td class="text-right"><?php echo $entry_quantity; ?></td>
                               <td class="text-left"><?php echo $entry_subtract; ?></td>
                               <td class="text-right"><?php echo $entry_price; ?></td>
-                              <td class="text-right"><?php echo $entry_option_points; ?></td>
-                              <td class="text-right"><?php echo $entry_weight; ?></td>
+                              <td class="text-right hidden"><?php echo $entry_option_points; ?></td>
+                              <td class="text-right hidden"><?php echo $entry_weight; ?></td>
                               <td></td>
                             </tr>
                           </thead>
@@ -580,12 +579,21 @@
                                 </select>
                                 <input type="hidden" name="product_option[<?php echo $option_row; ?>][product_option_value][<?php echo $option_value_row; ?>][product_option_value_id]" value="<?php echo $product_option_value['product_option_value_id']; ?>" />
                                 </td>
-                                <td class="text-right"><span class="span_color color1"></span> | <span class="span_color color2"></span> </td>
+                                <td class="text-right" style="width:80px"><span class="span_color color1"></span> | <span class="span_color color2"></span> </td>
                                 <td class="text-right">
-                                  <?php for($i=5;$i<=50;$i++):?>
-                                    <input type="checkbox" name="product_option[<?php echo $option_row; ?>][product_option_value][<?php echo $option_value_row; ?>][size][]" id="" class="" value="<?php echo $i?>" ><?php echo $i?>
+                                  <div class="grid_sizes" style="max-width:350px;">
+                                  <?php for($i=35;$i<=46;$i++):?>                                    
+                                    <div class="col-lg-4 col-md-4 col-sm-6 col-xs-6 inputs_size" data-inputQa="product_option[<?php echo $option_row; ?>][product_option_value][<?php echo $option_value_row; ?>][quantity]" value="<?php echo $product_option_value['quantity']; ?>">
+                                      <div class="input-group input-group-sm">
+                                        <span class="input-group-addon" id="size_<?php echo $i?>"><?php echo $i?></span>
+                                        <input id="size_'+i+'" class="form-control input-xs"  type="text" name="product_option[<?php echo $option_row; ?>][product_option_value][<?php echo $option_value_row; ?>][size][<?php echo $i?>]" value="<?php echo (isset($product_option_value['sizes'][$i]) )?$product_option_value['sizes'][$i]:''; ?>">
+                                      </div>
+                                    </div>
+                                    <!-- <input type="checkbox" name="product_option[<?php echo $option_row; ?>][product_option_value][<?php echo $option_value_row; ?>][size][]" id="" class="" value="<?php echo $i?>" ><?php echo $i?>
                                     <?php echo ($i!=5 && $i%5==0)?'<br>':''?>
+                                    -->
                                   <?php endfor;?>
+                                  </div>
                                 </td>
                                 <td class="text-right"><input type="text" name="product_option[<?php echo $option_row; ?>][product_option_value][<?php echo $option_value_row; ?>][quantity]" value="<?php echo $product_option_value['quantity']; ?>" placeholder="<?php echo $entry_quantity; ?>" class="form-control" /></td>
                               <td class="text-left"><select name="product_option[<?php echo $option_row; ?>][product_option_value][<?php echo $option_value_row; ?>][subtract]" class="form-control">
@@ -610,7 +618,7 @@
                                   <?php } ?>
                                 </select>
                                 <input type="text" name="product_option[<?php echo $option_row; ?>][product_option_value][<?php echo $option_value_row; ?>][price]" value="<?php echo $product_option_value['price']; ?>" placeholder="<?php echo $entry_price; ?>" class="form-control" /></td>
-                              <td class="text-right"><select name="product_option[<?php echo $option_row; ?>][product_option_value][<?php echo $option_value_row; ?>][points_prefix]" class="form-control">
+                              <td class="text-right hidden"><select name="product_option[<?php echo $option_row; ?>][product_option_value][<?php echo $option_value_row; ?>][points_prefix]" class="form-control">
                                   <?php if ($product_option_value['points_prefix'] == '+') { ?>
                                   <option value="+" selected="selected">+</option>
                                   <?php } else { ?>
@@ -623,7 +631,7 @@
                                   <?php } ?>
                                 </select>
                                 <input type="text" name="product_option[<?php echo $option_row; ?>][product_option_value][<?php echo $option_value_row; ?>][points]" value="<?php echo $product_option_value['points']; ?>" placeholder="<?php echo $entry_points; ?>" class="form-control" /></td>
-                              <td class="text-right"><select name="product_option[<?php echo $option_row; ?>][product_option_value][<?php echo $option_value_row; ?>][weight_prefix]" class="form-control">
+                              <td class="text-right hidden"><select name="product_option[<?php echo $option_row; ?>][product_option_value][<?php echo $option_value_row; ?>][weight_prefix]" class="form-control">
                                   <?php if ($product_option_value['weight_prefix'] == '+') { ?>
                                   <option value="+" selected="selected">+</option>
                                   <?php } else { ?>
@@ -645,7 +653,7 @@
                           </tbody>
                           <tfoot>
                             <tr>
-                              <td colspan="8"></td>
+                              <td colspan="6"></td>
                               <td class="text-left"><button type="button" onclick="addOptionValueColor('<?php echo $option_row; ?>');" data-toggle="tooltip" title="<?php echo $button_option_value_add; ?>" class="btn btn-primary"><i class="fa fa-plus-circle"></i></button></td>
                             </tr>
                           </tfoot>
@@ -670,8 +678,8 @@
                               <td class="text-right"><?php echo $entry_quantity; ?></td>
                               <td class="text-left"><?php echo $entry_subtract; ?></td>
                               <td class="text-right"><?php echo $entry_price; ?></td>
-                              <td class="text-right"><?php echo $entry_option_points; ?></td>
-                              <td class="text-right"><?php echo $entry_weight; ?></td>
+                              <td class="text-right hidden"><?php echo $entry_option_points; ?></td>
+                              <td class="text-right hidden"><?php echo $entry_weight; ?></td>
                               <td></td>
                             </tr>
                           </thead>
@@ -713,7 +721,7 @@
                                   <?php } ?>
                                 </select>
                                 <input type="text" name="product_option[<?php echo $option_row; ?>][product_option_value][<?php echo $option_value_row; ?>][price]" value="<?php echo $product_option_value['price']; ?>" placeholder="<?php echo $entry_price; ?>" class="form-control" /></td>
-                              <td class="text-right"><select name="product_option[<?php echo $option_row; ?>][product_option_value][<?php echo $option_value_row; ?>][points_prefix]" class="form-control">
+                              <td class="text-right hidden"><select name="product_option[<?php echo $option_row; ?>][product_option_value][<?php echo $option_value_row; ?>][points_prefix]" class="form-control">
                                   <?php if ($product_option_value['points_prefix'] == '+') { ?>
                                   <option value="+" selected="selected">+</option>
                                   <?php } else { ?>
@@ -726,7 +734,7 @@
                                   <?php } ?>
                                 </select>
                                 <input type="text" name="product_option[<?php echo $option_row; ?>][product_option_value][<?php echo $option_value_row; ?>][points]" value="<?php echo $product_option_value['points']; ?>" placeholder="<?php echo $entry_points; ?>" class="form-control" /></td>
-                              <td class="text-right"><select name="product_option[<?php echo $option_row; ?>][product_option_value][<?php echo $option_value_row; ?>][weight_prefix]" class="form-control">
+                              <td class="text-right hidden"><select name="product_option[<?php echo $option_row; ?>][product_option_value][<?php echo $option_value_row; ?>][weight_prefix]" class="form-control">
                                   <?php if ($product_option_value['weight_prefix'] == '+') { ?>
                                   <option value="+" selected="selected">+</option>
                                   <?php } else { ?>
@@ -746,7 +754,7 @@
                           </tbody>
                           <tfoot>
                             <tr>
-                              <td colspan="6"></td>
+                              <td colspan="4"></td>
                               <td class="text-left"><button type="button" onclick="addOptionValue('<?php echo $option_row; ?>');" data-toggle="tooltip" title="<?php echo $button_option_value_add; ?>" class="btn btn-primary"><i class="fa fa-plus-circle"></i></button></td>
                             </tr>
                           </tfoot>
@@ -1332,7 +1340,7 @@ $('input[name=\'option\']').autocomplete({
 			html += '    </tbody>';
 			html += '    <tfoot>';
 			html += '      <tr>';
-			html += '        <td colspan="6"></td>';
+			html += '        <td colspan="4"></td>';
 			html += '        <td class="text-left"><button type="button" onclick="addOptionValue(' + option_row + ');" data-toggle="tooltip" title="<?php echo $button_option_value_add; ?>" class="btn btn-primary"><i class="fa fa-plus-circle"></i></button></td>';
 			html += '      </tr>';
 			html += '    </tfoot>';
@@ -1400,12 +1408,12 @@ function addOptionValue(option_row) {
 	html += '    <option value="-">-</option>';
 	html += '  </select>';
 	html += '  <input type="text" name="product_option[' + option_row + '][product_option_value][' + option_value_row + '][price]" value="" placeholder="<?php echo $entry_price; ?>" class="form-control" /></td>';
-	html += '  <td class="text-right"><select name="product_option[' + option_row + '][product_option_value][' + option_value_row + '][points_prefix]" class="form-control">';
+	html += '  <td class="text-right hidden"><select name="product_option[' + option_row + '][product_option_value][' + option_value_row + '][points_prefix]" class="form-control">';
 	html += '    <option value="+">+</option>';
 	html += '    <option value="-">-</option>';
 	html += '  </select>';
 	html += '  <input type="text" name="product_option[' + option_row + '][product_option_value][' + option_value_row + '][points]" value="" placeholder="<?php echo $entry_points; ?>" class="form-control" /></td>';
-	html += '  <td class="text-right"><select name="product_option[' + option_row + '][product_option_value][' + option_value_row + '][weight_prefix]" class="form-control">';
+	html += '  <td class="text-right hidden"><select name="product_option[' + option_row + '][product_option_value][' + option_value_row + '][weight_prefix]" class="form-control">';
 	html += '    <option value="+">+</option>';
 	html += '    <option value="-">-</option>';
 	html += '  </select>';

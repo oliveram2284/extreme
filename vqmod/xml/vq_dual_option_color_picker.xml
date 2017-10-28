@@ -149,8 +149,8 @@
                     html += '        <td class="text-right"><?php echo $entry_quantity; ?></td>';
                     html += '        <td class="text-left"><?php echo $entry_subtract; ?></td>';
                     html += '        <td class="text-right"><?php echo $entry_price; ?></td>';
-                    html += '        <td class="text-right"><?php echo $entry_option_points; ?></td>';
-                    html += '        <td class="text-right"><?php echo $entry_weight; ?></td>';
+                    html += '        <td class="text-right hidden"><?php echo $entry_option_points; ?></td>';
+                    html += '        <td class="text-right hidden"><?php echo $entry_weight; ?></td>';
                     html += '        <td></td>';
                     html += '      </tr>';
                     html += '  	 </thead>';
@@ -159,7 +159,7 @@
                     
                     html += '    <tfoot>';
                     html += '      <tr>';
-                    html += '        <td colspan="8"></td>';
+                    html += '        <td colspan="6"></td>';
                     html += '        <td class="text-left"><button type="button" onclick="addOptionValueColor(' + option_row + ');" data-toggle="tooltip" title="<?php echo $button_option_value_add; ?>" class="btn btn-primary"><i class="fa fa-plus-circle"></i></button></td>';
                     html += '      </tr>';
                     html += '    </tfoot>';
@@ -193,19 +193,31 @@
                      console.log("==> addOptionValueColor clicked");
 
 
-                    var sizes="";
-                    for(i=5;i<=50;i++){
-                        sizes+='<input type="checkbox" name="product_option[' + option_row + '][product_option_value][' + option_value_row + '][size][]" id="" class="" value="'+i+'" > '+i+'';
-                        if(i!=5 && i%5==0){
+                    var sizes='<div class="grid_sizes" style="max-width:350px;">';
+                    for(i=35;i<=46;i++){
+                        //sizes+='<input type="checkbox" name="product_option[' + option_row + '][product_option_value][' + option_value_row + '][size][]" id="" class="" value="'+i+'" > '+i+'';
+                        //sizes += '<div class="form-group">'
+                        //sizes += '<label class="">'+i+'</label><input class="form-control input-xs size_input"  type="number" name="product_option[' + option_row + '][product_option_value][' + option_value_row + '][size]['+i+']"  ';
+                        /*if(i!=5 && i%5==0){
                         sizes+="<br>";
-                        }
+                        }*/
+                        sizes += '<div class="col-lg-4 col-md-4 col-sm-6 col-xs-6 inputs_size" data-inputQa="product_option[' + option_row + '][product_option_value][' + option_value_row + '][quantity]">';
+                        sizes += '<div class="input-group input-group-sm">';
+                        sizes += '<span class="input-group-addon" id="size_'+i+'">'+i+'</span>';
+                        sizes += '<input id="size_'+i+'" class="form-control input-xs"  type="text" name="product_option[' + option_row + '][product_option_value][' + option_value_row + '][size]['+i+']" >';
+                        sizes += '</div>';
+                        sizes += '</div>';
+
+                       
                     }
+                    sizes +="</div>";
+                    
 
                     html  = '<tr id="option-value-row' + option_value_row + '">';
                     html += '  <td class="text-left"><select name="product_option[' + option_row + '][product_option_value][' + option_value_row + '][option_value_id]"  id="select_color_option_' + option_row + '_' + option_value_row + '" class=" option_color_picker form-control">';
                     html += $('#option-values' + option_row).html();
                     html += '  </select><input type="hidden" name="product_option[' + option_row + '][product_option_value][' + option_value_row + '][product_option_value_id]" value="" /></td>';
-                    html += '  <td class="text-right"><span class="span_color color1"></span> | <span class="span_color color2"></span> </td>';
+                    html += '  <td class="text-right" style="width:80px"><span class="span_color color1"></span> | <span class="span_color color2"></span> </td>';
                     html += '  <td class="text-right">'+sizes+'</td>';
                     html += '  <td class="text-right"><input type="text" name="product_option[' + option_row + '][product_option_value][' + option_value_row + '][quantity]" value="" placeholder="<?php echo $entry_quantity; ?>" class="form-control" /></td>';
                     html += '  <td class="text-left"><select name="product_option[' + option_row + '][product_option_value][' + option_value_row + '][subtract]" class="form-control">';
@@ -217,12 +229,12 @@
                     html += '    <option value="-">-</option>';
                     html += '  </select>';
                     html += '  <input type="text" name="product_option[' + option_row + '][product_option_value][' + option_value_row + '][price]" value="" placeholder="<?php echo $entry_price; ?>" class="form-control" /></td>';
-                    html += '  <td class="text-right"><select name="product_option[' + option_row + '][product_option_value][' + option_value_row + '][points_prefix]" class="form-control">';
+                    html += '  <td class="text-right hidden"><select name="product_option[' + option_row + '][product_option_value][' + option_value_row + '][points_prefix]" class="form-control">';
                     html += '    <option value="+">+</option>';
                     html += '    <option value="-">-</option>';
                     html += '  </select>';
                     html += '  <input type="text" name="product_option[' + option_row + '][product_option_value][' + option_value_row + '][points]" value="" placeholder="<?php echo $entry_points; ?>" class="form-control" /></td>';
-                    html += '  <td class="text-right"><select name="product_option[' + option_row + '][product_option_value][' + option_value_row + '][weight_prefix]" class="form-control">';
+                    html += '  <td class="text-right hidden"><select name="product_option[' + option_row + '][product_option_value][' + option_value_row + '][weight_prefix]" class="form-control">';
                     html += '    <option value="+">+</option>';
                     html += '    <option value="-">-</option>';
                     html += '  </select>';
@@ -262,7 +274,26 @@
                 $(_span_color2).css('background-color',option.data('color2'));
                 
                 });
+                $(document).on('change','.inputs_size input',function(){
+                    console.debug("====> sizEs: CHANGED: %o",$(this).val());
+                    var sizes_inputs= $(this).closest('tr').find('.inputs_size input');
+                    var input_qua= $(this).closest('tr').find('.inputs_size').data('inputqa');
+                    console.debug("====> sizes_inputs: %o",sizes_inputs.length);
+                    console.debug("====> input_qua: %o",input_qua);
+                    var size_quantity=0;
+                    $.each(sizes_inputs,function(index,item){
+                        nro=parseInt($(item).val());
 
+                        if(!isNaN(nro)){
+                            size_quantity +=nro;                        
+                        }
+
+                    });
+                    console.debug("====> size_quantity: %o",size_quantity);
+                    console.debug("====> size_quantity: %o",$("input[name='"+input_qua+"']").val());
+                    //$('input[name=\'manufacturer\']')
+                    $("input[name='"+input_qua+"']").val(size_quantity);
+                });
                 $(".option_color_picker").trigger("change");
             //--></script>
             ]]>

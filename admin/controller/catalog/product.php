@@ -1105,6 +1105,7 @@ class ControllerCatalogProduct extends Controller {
 			$product_options = array();
 		}
 
+		
 		$data['product_options'] = array();
 
 		foreach ($product_options as $product_option) {
@@ -1112,10 +1113,12 @@ class ControllerCatalogProduct extends Controller {
 
 			if (isset($product_option['product_option_value'])) {
 				foreach ($product_option['product_option_value'] as $product_option_value) {
+					
 					$product_option_value_data[] = array(
 						'product_option_value_id' => $product_option_value['product_option_value_id'],
 						'option_value_id'         => $product_option_value['option_value_id'],
 						'quantity'                => $product_option_value['quantity'],
+						'sizes'                   => $product_option_value['sizes'],
 						'subtract'                => $product_option_value['subtract'],
 						'price'                   => $product_option_value['price'],
 						'price_prefix'            => $product_option_value['price_prefix'],
