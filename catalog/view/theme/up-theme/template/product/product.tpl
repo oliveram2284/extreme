@@ -405,6 +405,7 @@ $('.image-additional-wrapper').owlCarousel({
             <div class="form-group<?php echo ($option['required'] ? ' required' : ''); ?>">
               <label class="control-label"><?php echo $option['name']; ?></label>
               <div id="input-option<?php echo $option['product_option_id']; ?>">
+                
                 <?php foreach ($option['product_option_value'] as $option_value) { ?>
                 <div class="radio">
                   <label>
@@ -422,6 +423,54 @@ $('.image-additional-wrapper').owlCarousel({
               </div>
             </div>
             <?php } ?>
+            <?php if ($option['type'] == 'color'):?>
+              <div class="form-group<?php echo ($option['required'] ? ' required' : ''); ?>"> 
+                <h3><?php echo $option['name']; ?></h3>
+                <div id="input-option<?php echo $option['product_option_id']; ?>">
+                  <ul class="nav nav-tabs">
+                  <?php $first=0?>
+                  <?php foreach ($option['product_option_value'] as $option_value) { ?>                  
+                    <li class="<?php echo ($first==0)?'active':'';?>">
+                    
+                      <a data-toggle="tab" href="#option_value_<?php echo $option_value['product_option_value_id']?>" >
+                        <span class="span_color color1" style="background: linear-gradient(to right, <?php echo $option_value['color1']?> 50%, <?php echo $option_value['color2']?> 50%); "></span>
+                      </a>
+                    </li>    
+                    <?php $first=1?>            
+                  <?php } ?>
+                  </ul>
+
+                  <div class="tab-content">
+                    <?php $first=0?>
+                    <?php foreach ($option['product_option_value'] as $option_value) { ?>    
+                        
+                        <div id="option_value_<?php echo $option_value['product_option_value_id']?>" class="tab-pane fade <?php echo ($first==0)?' in active':'';?>  ">
+                        
+                          <h4>Talles</h4>
+                          <p>*Debe Seleccionar un talle.</p>
+                          
+                          <ul class="list-inline  size_list">
+                            <?php foreach($option_value['sizes'] as $sizes=>$total):?>
+                              <?php if($total!='' || $total!=0):?>
+                                <li class="list-inline-item in-stock ">
+                                <?php echo($sizes);?>
+                                <input  class="hidde radio_color_size" type="radio" name="option[<?php echo $option['product_option_id']; ?>]" value="<?php echo $option_value['product_option_value_id']; ?>" />
+                                </li>
+                              <?php else: ?>
+                                <li class="list-inline-item out-stock" disabled><?php echo($sizes);?>
+                                  <br>
+                                </li>
+                              <?php endif;?>
+                            <?php endforeach;?>                          
+                          </ul>
+                        </div>
+                        <?php $first=1?>      
+                    <?php } ?>
+                      
+                  </div>
+                </div>
+              </div>
+            <?php endif;?>
             <?php if ($option['type'] == 'checkbox') { ?>
             <div class="form-group<?php echo ($option['required'] ? ' required' : ''); ?>">
               <label class="control-label"><?php echo $option['name']; ?></label>

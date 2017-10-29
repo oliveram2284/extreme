@@ -1408,3 +1408,53 @@ legend,
 #menu .main-menu>li>a {
     text-transform: uppercase;
 }
+
+.span_color {
+    width: 80px;
+    height: 80px;
+    padding: 5px 10px 0px 10px;
+    background-color: #fff;
+    border-radius: 50%;
+    border: 1px solid #000;
+}
+
+.size_list {
+    background-color: none;
+    color: #000;
+}
+
+.size_list li {
+    padding-top: 15px;
+    margin: auto;
+    height: 50px;
+    width: 50px;
+    border: 1px solid #000;
+    font-size: 20px;
+}
+
+.size_list li.in-stock {
+    border: 2px solid #000;
+}
+
+.size_list li.in-stock:hover {
+    height: 55px;
+    width: 55px;
+    cursor: pointer;
+    background-color: #BD0000;
+    color: #fff;
+    border: 1px solid #000;
+}
+
+.size_list li.in-stock.selected {
+    height: 55px;
+    width: 55px;
+    cursor: pointer;
+    background-color: #BD0000;
+    color: #fff;
+    border: 1px solid #000;
+}
+
+.size_list li.out-stock {
+    background-color: #f5f5f5;
+    color: #666;
+}
