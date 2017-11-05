@@ -241,8 +241,6 @@ class ControllerCatalogOption extends Controller {
 			$url .= '&order=' . $this->request->get['order'];
 		}
 
-		var_dump();
-
 		$pagination = new Pagination();
 		$pagination->total = $option_total;
 		$pagination->page = $page;
