@@ -211,9 +211,11 @@ class ControllerCheckoutConfirm extends Controller {
 			$order_data['products'] = array();
 
 			foreach ($this->cart->getProducts() as $product) {
+
 				$option_data = array();
 
 				foreach ($product['option'] as $option) {
+					$size=(isset($option['size']))?$option['size']:'';
 					$option_data[] = array(
 						'product_option_id'       => $option['product_option_id'],
 						'product_option_value_id' => $option['product_option_value_id'],
@@ -221,6 +223,7 @@ class ControllerCheckoutConfirm extends Controller {
 						'option_value_id'         => $option['option_value_id'],
 						'name'                    => $option['name'],
 						'value'                   => $option['value'],
+						'size' 					  => $size,
 						'type'                    => $option['type']
 					);
 				}
@@ -324,9 +327,9 @@ class ControllerCheckoutConfirm extends Controller {
 			}
 
 			$this->load->model('checkout/order');
-
+			//die("previo guardar order");
 			$this->session->data['order_id'] = $this->model_checkout_order->addOrder($order_data);
-
+			//die("previo guardar order");
 			$data['text_recurring_item'] = $this->language->get('text_recurring_item');
 			$data['text_payment_recurring'] = $this->language->get('text_payment_recurring');
 
@@ -355,9 +358,10 @@ class ControllerCheckoutConfirm extends Controller {
 							$value = '';
 						}
 					}
-
+					$size=(isset($option['size']))?$option['size']:'';
 					$option_data[] = array(
 						'name'  => $option['name'],
+						'size'  => $size,
 						'value' => (utf8_strlen($value) > 20 ? utf8_substr($value, 0, 20) . '..' : $value)
 					);
 				}

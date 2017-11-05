@@ -39,7 +39,7 @@
           <table class="table table-bordered">
             <thead>
               <tr>
-                <td class="text-center"><?php echo $column_image; ?></td>
+                <td class="text-center"><?php echo $column_image; ?> </td>
                 <td class="text-left"><?php echo $column_name; ?></td>
                 <td class="text-left"><?php echo $column_model; ?></td>
                 <td class="text-left"><?php echo $column_quantity; ?></td>
@@ -58,10 +58,15 @@
                   <span class="text-danger">***</span>
                   <?php } ?>
                   <?php if ($product['option']) { ?>
-                  <?php foreach ($product['option'] as $option) { ?>
-                  <br />
-                  <small><?php echo $option['name']; ?>: <?php echo $option['value']; ?></small>
-                  <?php } ?>
+                    <?php foreach ($product['option'] as $option) { ?>                    
+                    <br />
+                    <small><?php echo $option['name']; ?>: <?php echo $option['value']; ?></small>
+                    <?php if($option['size']!=''):?>
+                      <br />
+                      <small><?php echo 'Nro de Talle' ?>: <?php echo $option['size']; ?></small>
+                    <?php endif;?>
+                    
+                    <?php } ?>
                   <?php } ?>
                   <?php if ($product['reward']) { ?>
                   <br />

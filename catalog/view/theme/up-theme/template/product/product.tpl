@@ -454,20 +454,24 @@ $('.image-additional-wrapper').owlCarousel({
                               <?php if($total!='' || $total!=0):?>
                                 <li class="list-inline-item in-stock ">
                                 <?php echo($sizes);?>
-                                <input  class="hidde radio_color_size" type="radio" name="option[<?php echo $option['product_option_id']; ?>]" value="<?php echo $option_value['product_option_value_id']; ?>" />
+                                <input  class="hidden radio_color_size" type="radio" name="option[<?php echo $option['product_option_id']; ?>]" value="<?php echo $option_value['product_option_value_id']; ?>-<?php echo($sizes);?>" data-sizes="<?php echo($sizes);?>" />
                                 </li>
                               <?php else: ?>
                                 <li class="list-inline-item out-stock" disabled><?php echo($sizes);?>
-                                  <br>
+                                <input  class="hidden radio_color_size" type="radio" name="option[<?php echo $option['product_option_id']; ?>]" value="<?php echo $option_value['product_option_value_id']; ?>" data-sizes="<?php echo($sizes);?>" />
+                                   
                                 </li>
                               <?php endif;?>
                             <?php endforeach;?>                          
                           </ul>
+                          
                         </div>
                         <?php $first=1?>      
                     <?php } ?>
                       
                   </div>
+                  
+                  
                 </div>
               </div>
             <?php endif;?>
@@ -1098,6 +1102,17 @@ $('.product-items-related').owlCarousel({
     <?php echo $column_right; ?></div>
 </div>
 <script type="text/javascript"><!--
+
+$(".in-stock").on('click',function(){
+  var radio= $(this).find('input[type=\'radio\']');
+  $(".in-stock").removeClass('selected');
+  $(this).addClass('selected');
+  $(radio).prop('checked', true);
+  return false;
+});
+
+
+
 $('select[name=\'recurring_id\'], input[name="quantity"]').change(function(){
 	$.ajax({
 		url: 'index.php?route=product/product/getRecurringDescription',
@@ -1119,6 +1134,9 @@ $('select[name=\'recurring_id\'], input[name="quantity"]').change(function(){
 //--></script> 
 <script type="text/javascript"><!--
 $('#button-cart').on('click', function() {
+
+
+
 	$.ajax({
 		url: 'index.php?route=checkout/cart/add',
 		type: 'post',

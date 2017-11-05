@@ -15,8 +15,13 @@
       <tr>
         <td class="text-left"><a href="<?php echo $product['href']; ?>"><?php echo $product['name']; ?></a>
           <?php foreach ($product['option'] as $option) { ?>
+         
           <br />
           &nbsp;<small> - <?php echo $option['name']; ?>: <?php echo $option['value']; ?></small>
+          <?php if($option['size']!=''):?>  
+          <br />          
+              &nbsp;<small> - <?php echo 'Nro de Talle' ?>: <?php echo $option['size']; ?></small>
+          <?php endif;?>
           <?php } ?>
           <?php if($product['recurring']) { ?>
           <br />

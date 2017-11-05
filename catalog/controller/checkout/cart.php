@@ -108,9 +108,11 @@ class ControllerCheckoutCart extends Controller {
 							$value = '';
 						}
 					}
+					$size=(isset($option['size']))?$option['size']:'';
 
 					$option_data[] = array(
 						'name'  => $option['name'],
+						'size'  => $size,
 						'value' => (utf8_strlen($value) > 20 ? utf8_substr($value, 0, 20) . '..' : $value)
 					);
 				}
