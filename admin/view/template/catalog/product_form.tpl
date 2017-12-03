@@ -1,5 +1,6 @@
 <?php echo $header; ?><?php echo $column_left; ?>
 <div id="content">
+
   <div class="page-header">
     <div class="container-fluid">
       <div class="pull-right">
@@ -95,7 +96,7 @@
               </div>
             </div>
             <div class="tab-pane" id="tab-data">
-              <div class="form-group required">
+              <div class="form-group required hidden">
                 <label class="col-sm-2 control-label" for="input-model"><?php echo $entry_model; ?></label>
                 <div class="col-sm-10">
                   <input type="text" name="model" value="<?php echo $model; ?>" placeholder="<?php echo $entry_model; ?>" id="input-model" class="form-control" />
@@ -110,37 +111,37 @@
                   <input type="text" name="sku" value="<?php echo $sku; ?>" placeholder="<?php echo $entry_sku; ?>" id="input-sku" class="form-control" />
                 </div>
               </div>
-              <div class="form-group">
+              <div class="form-group hidden">
                 <label class="col-sm-2 control-label" for="input-upc"><span data-toggle="tooltip" title="<?php echo $help_upc; ?>"><?php echo $entry_upc; ?></span></label>
                 <div class="col-sm-10">
                   <input type="text" name="upc" value="<?php echo $upc; ?>" placeholder="<?php echo $entry_upc; ?>" id="input-upc" class="form-control" />
                 </div>
               </div>
-              <div class="form-group">
+              <div class="form-group hidden">
                 <label class="col-sm-2 control-label" for="input-ean"><span data-toggle="tooltip" title="<?php echo $help_ean; ?>"><?php echo $entry_ean; ?></span></label>
                 <div class="col-sm-10">
                   <input type="text" name="ean" value="<?php echo $ean; ?>" placeholder="<?php echo $entry_ean; ?>" id="input-ean" class="form-control" />
                 </div>
               </div>
-              <div class="form-group">
+              <div class="form-group hidden">
                 <label class="col-sm-2 control-label" for="input-jan"><span data-toggle="tooltip" title="<?php echo $help_jan; ?>"><?php echo $entry_jan; ?></span></label>
                 <div class="col-sm-10">
                   <input type="text" name="jan" value="<?php echo $jan; ?>" placeholder="<?php echo $entry_jan; ?>" id="input-jan" class="form-control" />
                 </div>
               </div>
-              <div class="form-group">
+              <div class="form-group hidden">
                 <label class="col-sm-2 control-label" for="input-isbn"><span data-toggle="tooltip" title="<?php echo $help_isbn; ?>"><?php echo $entry_isbn; ?></span></label>
                 <div class="col-sm-10">
                   <input type="text" name="isbn" value="<?php echo $isbn; ?>" placeholder="<?php echo $entry_isbn; ?>" id="input-isbn" class="form-control" />
                 </div>
               </div>
-              <div class="form-group">
+              <div class="form-group hidden">
                 <label class="col-sm-2 control-label" for="input-mpn"><span data-toggle="tooltip" title="<?php echo $help_mpn; ?>"><?php echo $entry_mpn; ?></span></label>
                 <div class="col-sm-10">
                   <input type="text" name="mpn" value="<?php echo $mpn; ?>" placeholder="<?php echo $entry_mpn; ?>" id="input-mpn" class="form-control" />
                 </div>
               </div>
-              <div class="form-group">
+              <div class="form-group hidden">
                 <label class="col-sm-2 control-label" for="input-location"><?php echo $entry_location; ?></label>
                 <div class="col-sm-10">
                   <input type="text" name="location" value="<?php echo $location; ?>" placeholder="<?php echo $entry_location; ?>" id="input-location" class="form-control" />
@@ -152,14 +153,14 @@
                   <input type="text" name="price" value="<?php echo $price; ?>" placeholder="<?php echo $entry_price; ?>" id="input-price" class="form-control" />
                 </div>
               </div>
-              <div class="form-group">
+              <div class="form-group hidden">
                 <label class="col-sm-2 control-label" for="input-tax-class"><?php echo $entry_tax_class; ?></label>
                 <div class="col-sm-10">
                   <select name="tax_class_id" id="input-tax-class" class="form-control">
-                    <option value="0"><?php echo $text_none; ?></option>
+                    <option value="0" selected="selected"><?php echo $text_none; ?></option>
                     <?php foreach ($tax_classes as $tax_class) { ?>
                     <?php if ($tax_class['tax_class_id'] == $tax_class_id) { ?>
-                    <option value="<?php echo $tax_class['tax_class_id']; ?>" selected="selected"><?php echo $tax_class['title']; ?></option>
+                    <option value="<?php echo $tax_class['tax_class_id']; ?>" ><?php echo $tax_class['title']; ?></option>
                     <?php } else { ?>
                     <option value="<?php echo $tax_class['tax_class_id']; ?>"><?php echo $tax_class['title']; ?></option>
                     <?php } ?>
@@ -448,6 +449,7 @@
               </div>
             </div>
             <div class="tab-pane" id="tab-option">
+             <input type="hidden" id="option_talles_input" data-talles="<?php echo htmlspecialchars(json_encode($options_talles), ENT_QUOTES, 'UTF-8'); ?>">
               <div class="row">
                 <div class="col-sm-2">
                   <ul class="nav nav-pills nav-stacked" id="option">
@@ -582,20 +584,36 @@
                                 <td class="text-right" style="width:80px"><span class="span_color color1"></span> | <span class="span_color color2"></span> </td>
                                 <td class="text-right">
                                   <div class="grid_sizes" style="max-width:350px;">
-                                  <?php for($i=35;$i<=46;$i++):?>                                    
-                                    <div class="col-lg-4 col-md-4 col-sm-6 col-xs-6 inputs_size" data-inputQa="product_option[<?php echo $option_row; ?>][product_option_value][<?php echo $option_value_row; ?>][quantity]" value="<?php echo $product_option_value['quantity']; ?>">
-                                      <div class="input-group input-group-sm">
-                                        <span class="input-group-addon" id="size_<?php echo $i?>"><?php echo $i?></span>
-                                        <input id="size_'+i+'" class="form-control input-xs"  type="text" name="product_option[<?php echo $option_row; ?>][product_option_value][<?php echo $option_value_row; ?>][size][<?php echo $i?>]" value="<?php echo (isset($product_option_value['sizes'][$i]) )?$product_option_value['sizes'][$i]:''; ?>">
-                                      </div>
-                                    </div>
-                                    <!-- <input type="checkbox" name="product_option[<?php echo $option_row; ?>][product_option_value][<?php echo $option_value_row; ?>][size][]" id="" class="" value="<?php echo $i?>" ><?php echo $i?>
-                                    <?php echo ($i!=5 && $i%5==0)?'<br>':''?>
-                                    -->
-                                  <?php endfor;?>
+                                  
+
+                                    <div class="panel-group" id="accordion" role="tablist" aria-multiselectable="true">
+                                      <?php foreach($options_talles as $key=> $talle_option):?>
+                                        <div class="panel panel-default">
+                                          <div class="panel-heading" role="tab" id="<?php echo 'heading_'.$option_value_row.'_'.$key;?> " >
+                                            <h4 class="panel-title">
+                                              <a role="button" data-toggle="collapse" data-parent="#accordion" href="<?php echo '#collapse'.$option_value_row.'_'.$key;?>"  aria-controls="<?php echo 'collapse'.$option_value_row.'_'.$key;?>">
+                                                <?php echo($talle_option['name']);?> <span class="caret"></span>
+                                              </a>
+                                            </h4>
+                                          </div>
+                                          <div id="<?php echo 'collapse'.$option_value_row.'_'.$key;?>" class="panel-collapse collapse <?php echo ($key==0)?'in':'';?>" role="tabpanel" aria-labelledby="<?php echo 'heading_'.$option_value_row.'_'.$key;?> ">
+                                            <div class="panel-body">
+                                              <?php foreach($talle_option['sizes'] as $tkey=>$tsize):?>                                               
+                                                <div class="col-lg-4 col-md-4 col-sm-6 col-xs-6 inputs_size" data-inputQa="product_option[<?php echo $option_row; ?>][product_option_value][<?php echo $option_value_row; ?>][quantity]" value="<?php echo $product_option_value['quantity']; ?>">
+                                                  <div class="input-group input-group-sm">
+                                                    <span class="input-group-addon" id="size_<?php echo $tsize['name']?>"><?php echo $tsize['name']?></span>
+                                                    <input id="size_<?php echo $tsize['name']?>" class="form-control input-xs"  type="text" name="product_option[<?php echo $option_row; ?>][product_option_value][<?php echo $option_value_row; ?>][size][<?php echo $tsize['name']?>]" value="<?php echo (isset($product_option_value['sizes'][$tsize['name']]) )?$product_option_value['sizes'][$tsize['name']]:''; ?>">
+                                                  </div>
+                                                </div>
+                                              <?php endforeach;?>
+                                            </div>
+                                          </div>
+                                        </div>
+                                      <?php endforeach;?>
+                                    </div>                                  
                                   </div>
                                 </td>
-                                <td class="text-right"><input type="text" name="product_option[<?php echo $option_row; ?>][product_option_value][<?php echo $option_value_row; ?>][quantity]" value="<?php echo $product_option_value['quantity']; ?>" placeholder="<?php echo $entry_quantity; ?>" class="form-control" /></td>
+                                <td class="text-right"><input type="text" name="product_option[<?php echo $option_row; ?>][product_option_value][<?php echo $option_value_row; ?>][quantity]" value="<?php echo $product_option_value['quantity']; ?>" placeholder="<?php echo $entry_quantity; ?>" class="form-control option_quantity" /></td>
                               <td class="text-left"><select name="product_option[<?php echo $option_row; ?>][product_option_value][<?php echo $option_value_row; ?>][subtract]" class="form-control">
                                   <?php if ($product_option_value['subtract']) { ?>
                                   <option value="1" selected="selected"><?php echo $text_yes; ?></option>
@@ -668,6 +686,35 @@
                         <?php } ?>
                         <?php } ?>
                       </select>
+                     
+                      <!--
+                       <div class="panel-group" id="accordion_aux<?php echo $option_row; ?>" role="tablist" aria-multiselectable="true">
+                        <?php foreach($options_talles as $key=> $talle_option):?>
+                          <div class="panel panel-default">
+                            <div class="panel-heading" role="tab" id="<?php echo 'heading_'.$option_row.'_'.$key;?> " >
+                              <h4 class="panel-title">
+                                <a role="button" data-toggle="collapse" data-parent="#accordion_aux<?php echo $option_row; ?>" href="<?php echo '#collapse'.$option_row.'_'.$key;?>"  aria-controls="<?php echo 'collapse'.$option_row.'_'.$key;?>">
+                                  <?php echo($talle_option['name']);?> <span class="caret"></span>
+                                </a>
+                              </h4>
+                            </div>
+                            <div id="<?php echo 'collapse'.$option_row.'_'.$key;?>" class="panel-collapse collapse <?php echo ($key==0)?'in':'';?>" role="tabpanel" aria-labelledby="<?php echo 'heading_'.$option_row.'_'.$key;?> ">
+                              <div class="panel-body">
+                                <?php foreach($talle_option['sizes'] as $tkey=>$tsize):?>                                               
+                                  <div class="col-lg-4 col-md-4 col-sm-6 col-xs-6 inputs_size" data-inputQa="product_option[<?php echo $option_row; ?>][product_option_value][<?php echo $option_value_row; ?>][quantity]" value="">
+                                    <div class="input-group input-group-sm">
+                                      <span class="input-group-addon" id="size_<?php echo $tsize['name']?>"><?php echo $tsize['name']?></span>
+                                      <input id="size_<?php echo $tsize['name']?>" class="form-control input-xs"  type="text" name="product_option[<?php echo $option_row; ?>][product_option_value][<?php echo $option_value_row; ?>][size][$tsize['name']]" value="">
+                                    </div>
+                                  </div>
+                                <?php endforeach;?>
+                              </div>
+                            </div>
+                          </div>
+                        <?php endforeach;?>
+                      </div> -->
+
+
                       <?php endif;?>
                       <?php if ($product_option['type'] == 'select' || $product_option['type'] == 'radio' || $product_option['type'] == 'checkbox' || $product_option['type'] == 'image') { ?>
                       <div class="table-responsive">

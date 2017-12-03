@@ -1096,7 +1096,6 @@ class ControllerCatalogProduct extends Controller {
 
 		// Options
 		$this->load->model('catalog/option');
-
 		if (isset($this->request->post['product_option'])) {
 			$product_options = $this->request->post['product_option'];
 		} elseif (isset($this->request->get['product_id'])) {
@@ -1106,14 +1105,16 @@ class ControllerCatalogProduct extends Controller {
 		}
 
 		
+		
 		$data['product_options'] = array();
 
 		foreach ($product_options as $product_option) {
+
+			
 			$product_option_value_data = array();
 
 			if (isset($product_option['product_option_value'])) {
 				foreach ($product_option['product_option_value'] as $product_option_value) {
-					
 					$product_option_value_data[] = array(
 						'product_option_value_id' => $product_option_value['product_option_value_id'],
 						'option_value_id'         => $product_option_value['option_value_id'],
@@ -1139,7 +1140,14 @@ class ControllerCatalogProduct extends Controller {
 				'value'                => isset($product_option['value']) ? $product_option['value'] : '',
 				'required'             => $product_option['required']
 			);
+
+			
+
 		}
+
+
+		$option_talles=$this->model_catalog_option->getOptionByType('size');
+		$data['options_talles']=$option_talles;
 
 		$data['option_values'] = array();
 
@@ -1150,7 +1158,10 @@ class ControllerCatalogProduct extends Controller {
 				}
 			}
 		}
-		
+		// Obtiene Opciones Talles
+		//$data=$th
+		// Obtiene Opciones talles
+
 		$this->load->model('customer/customer_group');
 
 		$data['customer_groups'] = $this->model_customer_customer_group->getCustomerGroups();
@@ -1339,8 +1350,11 @@ class ControllerCatalogProduct extends Controller {
 			}
 		}
 
-		if ((utf8_strlen($this->request->post['model']) < 1) || (utf8_strlen($this->request->post['model']) > 64)) {
-			$this->error['model'] = $this->language->get('error_model');
+		
+
+		if ((utf8_strlen($this->request->post['sku']) < 1) || (utf8_strlen($this->request->post['sku']) > 100)) {
+			
+			$this->error['sku'] = $this->language->get('error_sku');
 		}
 
 		if (utf8_strlen($this->request->post['keyword']) > 0) {

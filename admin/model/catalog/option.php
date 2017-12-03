@@ -11,10 +11,7 @@ class ModelCatalogOption extends Model {
 
 		if (isset($data['option_value'])) {
 			foreach ($data['option_value'] as $option_value) {
-				//var_dump($option_value);
-				//echo("INSERT INTO " . DB_PREFIX . "option_value SET option_id = '" . (int)$option_id . "',image = '" . $this->db->escape(html_entity_decode($option_value['image'], ENT_QUOTES, 'UTF-8')) . "',color1 = '" . $this->db->escape($option_value['option_color_1']) . "',color2 = '" . $this->db->escape($option_value['option_color_2']) . "',sort_order = '" . (int)$option_value['sort_order'] . "'");
-				//die("dsd");
-				//$this->db->query("INSERT INTO " . DB_PREFIX . "option_value SET option_id = '" . (int)$option_id . "', image = '" . $this->db->escape(html_entity_decode($option_value['image'], ENT_QUOTES, 'UTF-8')) . "', sort_order = '" . (int)$option_value['sort_order'] . "'");
+				$this->db->query("INSERT INTO " . DB_PREFIX . "option_value SET option_id = '" . (int)$option_id . "', image = '" . $this->db->escape(html_entity_decode($option_value['image'], ENT_QUOTES, 'UTF-8')) . "', sort_order = '" . (int)$option_value['sort_order'] . "'");
 				$this->db->query("INSERT INTO " . DB_PREFIX . "option_value SET option_id = '" . (int)$option_id . "',image = '" . $this->db->escape(html_entity_decode($option_value['image'], ENT_QUOTES, 'UTF-8')) . "',color1 = '" . $this->db->escape($option_value['option_color_1']) . "',color2 = '" . $this->db->escape($option_value['option_color_2']) . "',sort_order = '" . (int)$option_value['sort_order'] . "'");
 				$option_value_id = $this->db->getLastId();
 
@@ -70,6 +67,17 @@ class ModelCatalogOption extends Model {
 
 		return $query->row;
 	}
+
+	public function getOptionByType($type) {
+		$query = $this->db->query("SELECT * FROM `" . DB_PREFIX . "option` o LEFT JOIN " . DB_PREFIX . "option_description od ON (o.option_id = od.option_id) WHERE o.type = '" . $type . "' AND od.language_id = '" . (int)$this->config->get('config_language_id') . "'");
+		$options=$query->rows;
+		foreach($options as $key=>$option){	
+			$option_values=$this->getOptionValues($option['option_id']);			
+			$options[$key]['sizes']=$option_values;
+		}
+		return $options;
+	}
+
 
 	public function getOptions($data = array()) {
 		$sql = "SELECT * FROM `" . DB_PREFIX . "option` o LEFT JOIN " . DB_PREFIX . "option_description od ON (o.option_id = od.option_id) WHERE od.language_id = '" . (int)$this->config->get('config_language_id') . "'";

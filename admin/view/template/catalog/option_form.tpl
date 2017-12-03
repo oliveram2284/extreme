@@ -100,8 +100,14 @@
                 <option value="color" selected="selected"><?php echo $text_color; ?></option>
                 <?php } else { ?>
                 <option value="color"><?php echo $text_color; ?></option>
-                <?php } ?>
-                  
+                <?php } ?>                  
+                </optgroup>
+                <optgroup label="<?php echo $text_size; ?>">
+                <?php if ($type == 'size') { ?>
+                <option value="size" selected="selected"><?php echo $text_size; ?></option>
+                <?php } else { ?>
+                <option value="size"><?php echo $text_size; ?></option>
+                <?php } ?>                  
                 </optgroup>
                  
                 </select>
@@ -202,7 +208,7 @@
   <script type="text/javascript"><!--
 $('select[name=\'type\']').on('change', function() {
   console.debug(this.value);
-	if (this.value == 'select' || this.value == 'radio' || this.value == 'checkbox' || this.value == 'image') {
+	if (this.value == 'select' || this.value == 'radio' || this.value == 'checkbox' || this.value == 'image' || this.value == 'size') {
 		$('#option-value').show();
     $('#option-color-value').hide();
 	} else if(this.value=="color") {

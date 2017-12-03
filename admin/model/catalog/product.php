@@ -195,7 +195,8 @@ class ModelCatalogProduct extends Model {
 					}
 				}elseif($product_option['type'] == 'color'){
 					
-					
+					//var_dump($product_option['product_option_value']);
+					//continue;
 					if (isset($product_option['product_option_value'])) {
 						$this->db->query("INSERT INTO " . DB_PREFIX . "product_option SET product_option_id = '" . (int)$product_option['product_option_id'] . "', product_id = '" . (int)$product_id . "', option_id = '" . (int)$product_option['option_id'] . "', required = '" . (int)$product_option['required'] . "'");
 
